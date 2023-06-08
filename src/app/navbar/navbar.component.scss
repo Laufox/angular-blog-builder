@@ -1,0 +1,15 @@
+.navbar-wrapper {
+    height: 40px;
+    background-color: #ddd;
+
+    .navbar-container {
+        display: flex;
+        height: 100%;
+        max-width: 1400px;
+        margin: auto;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 1rem;
+    }
+    
+}
