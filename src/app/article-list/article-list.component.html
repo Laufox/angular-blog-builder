@@ -1,19 +1,22 @@
 <div class="article-list-wrapper">
     <div class="article-list-container">
-        <a href="">+ Article</a>
+        <button
+            (click)="addArticle({
+                title: 'My new blog post',
+                date: '23-06-08',
+                author: 'John Doe',
+                body: 'Lorem ipsum dolor sit amet'
+            })"
+        >
+            + Article
+        </button>
         <div class="article-container">
-            <h2>ArticleTitle</h2>
-            <span>Date author metadata</span>
-            <p>Article body</p>
-            <h2>ArticleTitle</h2>
-            <span>Date author metadata</span>
-            <p>Article body</p>
-            <h2>ArticleTitle</h2>
-            <span>Date author metadata</span>
-            <p>Article body</p>
-            <h2>ArticleTitle</h2>
-            <span>Date author metadata</span>
-            <p>Article body</p>
+            <div *ngFor="let article of articles">
+                <h2>{{article.title}}</h2>
+                <span>{{article.date}} | {{article.author | uppercase}}</span>
+                <p>{{article.body}}</p>
+            </div>
         </div>
+
     </div>
 </div>

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Article } from '../article';
 
 @Component({
   selector: 'app-article-list',
@@ -6,5 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./article-list.component.scss']
 })
 export class ArticleListComponent {
+  
+  articles: Article[] = []
 
+  addArticle(article: Article): void {
+    this.articles.push(article)
+  }
 }
