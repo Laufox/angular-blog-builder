@@ -25,4 +25,9 @@ export class ArticleListComponent {
     this.articles.push(article)
     localStorage.setItem("articles",JSON.stringify(this.articles))
   }
+
+  removeArticle(index: number): void {
+    this.articles.splice(index, 1)
+    localStorage.setItem("articles", JSON.stringify(this.articles))
+  }
 }

@@ -11,10 +11,15 @@
             + Article
         </button>
         <div class="article-container">
-            <div *ngFor="let article of articles">
+            <div *ngFor="let article of articles; let i=index">
                 <h2>{{article.title}}</h2>
                 <span>{{article.date}} | {{article.author | uppercase}}</span>
                 <p>{{article.body}}</p>
+                <button
+                    (click)="removeArticle(i)"
+                >
+                    Delete
+                </button>
             </div>
         </div>
 
