@@ -1,0 +1,18 @@
+<div class="article-form-wrapper">
+    <div class="article-form-container">
+        
+        <span>Title:</span>
+        <input type="text" #title />
+        <span>Body:</span>
+        <textarea #body></textarea>
+        
+        <button
+            (click)="testPrint({
+                title: title.value,
+                date: '230608',
+                author: 'John Doe',
+                body: body.value
+            });title.value='';body.value=''"
+        >Add</button>
+    </div>
+</div>

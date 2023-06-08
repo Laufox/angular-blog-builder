@@ -9,6 +9,7 @@ import { Article } from '../article';
 export class ArticleListComponent {
   
   articles: Article[] = []
+  articleFormOpen: boolean = false
 
   ngOnInit(): void {
     const storageArticles = localStorage.getItem('articles')
@@ -30,4 +31,21 @@ export class ArticleListComponent {
     this.articles.splice(index, 1)
     localStorage.setItem("articles", JSON.stringify(this.articles))
   }
+
+  openArticleForm(): void {
+    this.articleFormOpen = true
+  }
+
+  closeArticleForm(): void {
+    this.articleFormOpen = false
+  }
 }
+
+/**
+ * addArticle({
+                title: 'My new blog post',
+                date: '23-06-08',
+                author: 'John Doe',
+                body: 'Lorem ipsum dolor sit amet'
+            })
+ */
