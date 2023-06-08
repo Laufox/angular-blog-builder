@@ -10,7 +10,19 @@ export class ArticleListComponent {
   
   articles: Article[] = []
 
+  ngOnInit(): void {
+    const storageArticles = localStorage.getItem('articles')
+
+    if (!storageArticles) {
+      return
+    }
+    
+    const parsedArticles = JSON.parse(storageArticles)
+    this.articles = parsedArticles
+  }
+
   addArticle(article: Article): void {
     this.articles.push(article)
+    localStorage.setItem("articles",JSON.stringify(this.articles))
   }
 }
