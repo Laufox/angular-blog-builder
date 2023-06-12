@@ -1,5 +1,10 @@
 <div class="article-form-wrapper">
     <div class="article-form-container">
+        <p
+            (click)="closeForm()"
+        >
+            X
+        </p>
         
         <span>Title:</span>
         <input type="text" #title />
@@ -7,7 +12,7 @@
         <textarea #body></textarea>
         
         <button
-            (click)="testPrint({
+            (click)="addArticle({
                 title: title.value,
                 date: '230608',
                 author: 'John Doe',

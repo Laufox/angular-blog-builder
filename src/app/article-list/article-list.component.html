@@ -1,12 +1,7 @@
 <div class="article-list-wrapper">
     <div class="article-list-container">
         <button
-            (click)="addArticle({
-                title: 'My new blog post',
-                date: '23-06-08',
-                author: 'John Doe',
-                body: 'Lorem ipsum dolor sit amet'
-            })"
+            (click)="openForm()"
         >
             + Article
         </button>
@@ -15,15 +10,13 @@
                 <h2>{{article.title}}</h2>
                 <span>{{article.date}} | {{article.author | uppercase}}</span>
                 <p>{{article.body}}</p>
-                <!-- <button
+                <button
                     (click)="removeArticle(i)"
                 >
                     Delete
-                </button> -->
+                </button>
             </div>
         </div>
 
     </div>
 </div>
-
-<app-article-form *ngIf="articleFormOpen" />

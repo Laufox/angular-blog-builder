@@ -1,6 +1,4 @@
-import { Component, Input } from '@angular/core';
-import { ArticleService } from '../article-service.service';
-import { Article } from '../article';
+import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-navbar',
@@ -8,4 +6,11 @@ import { Article } from '../article';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent {
+
+  @Output() toggleArticleForm = new EventEmitter<boolean>()
+
+  openForm() {
+    this.toggleArticleForm.emit(true)
+  }
+
 }

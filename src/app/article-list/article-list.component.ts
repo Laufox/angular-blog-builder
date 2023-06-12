@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { Article } from '../article';
-import { Input } from '@angular/core';
 import { ArticleService } from '../article-service.service';
 
 @Component({
@@ -10,8 +9,7 @@ import { ArticleService } from '../article-service.service';
 })
 export class ArticleListComponent {
   
-  // @Input() articles?: Article[]
-  // @Input() addArticle: (article: Article) => void
+  @Output() toggleArticleForm = new EventEmitter<boolean>()
   articles: Article[] = []
   articleFormOpen: boolean = false
 
@@ -21,27 +19,13 @@ export class ArticleListComponent {
     this.articles = this.articleService.getArticles()
   }
 
-  // // Push new article to array and update localstorage
-  addArticle(article: Article): void {
-    this.articleService.addArticle(article)
+  removeArticle(index: number): void {
+    this.articleService.removeArticle(index)
   }
 
   // Open modal for adding new article
-  openArticleForm(): void {
-    this.articleFormOpen = true
+  openForm(): void {
+    this.toggleArticleForm.emit(true)
   }
 
-  // Close modal for adding new article
-  closeArticleForm(): void {
-    this.articleFormOpen = false
-  }
 }
-
-/**
- * addArticle({
-                title: 'My new blog post',
-                date: '23-06-08',
-                author: 'John Doe',
-                body: 'Lorem ipsum dolor sit amet'
-            })
- */

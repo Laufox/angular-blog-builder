@@ -1,3 +1,4 @@
-<app-navbar />
+<app-navbar (toggleArticleForm)="toggleArticleForm($event)" />
 <app-header />
-<app-article-list />
+<app-article-list (toggleArticleForm)="toggleArticleForm($event)" />
+<app-article-form *ngIf="articleOpen" (toggleArticleForm)="toggleArticleForm($event)" />

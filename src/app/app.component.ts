@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { Article } from './article';
-import { ArticleService } from './article-service.service';
 
 @Component({
   selector: 'app-root',
@@ -9,11 +7,10 @@ import { ArticleService } from './article-service.service';
 })
 export class AppComponent {
   title = 'angular-blog-builder';
-  // articles: Article[] = []
+  articleOpen: boolean = false
 
-  // constructor(private articleService: ArticleService) {}
+  toggleArticleForm(state: boolean) {
+    this.articleOpen = state
+  }
 
-  // ngOnInit(): void {
-  //   this.articles = this.articleService.getArticles()
-  // }
 }
