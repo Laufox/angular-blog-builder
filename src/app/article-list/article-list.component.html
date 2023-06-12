@@ -1,7 +1,12 @@
 <div class="article-list-wrapper">
     <div class="article-list-container">
         <button
-            (click)="openArticleForm()"
+            (click)="addArticle({
+                title: 'My new blog post',
+                date: '23-06-08',
+                author: 'John Doe',
+                body: 'Lorem ipsum dolor sit amet'
+            })"
         >
             + Article
         </button>
@@ -10,11 +15,11 @@
                 <h2>{{article.title}}</h2>
                 <span>{{article.date}} | {{article.author | uppercase}}</span>
                 <p>{{article.body}}</p>
-                <button
+                <!-- <button
                     (click)="removeArticle(i)"
                 >
                     Delete
-                </button>
+                </button> -->
             </div>
         </div>
 

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Article } from '../article';
+import { Input } from '@angular/core';
+import { ArticleService } from '../article-service.service';
 
 @Component({
   selector: 'app-article-list',
@@ -8,34 +10,20 @@ import { Article } from '../article';
 })
 export class ArticleListComponent {
   
+  // @Input() articles?: Article[]
+  // @Input() addArticle: (article: Article) => void
   articles: Article[] = []
   articleFormOpen: boolean = false
 
-  // Stuff thats happen on component startup
-  ngOnInit(): void {
-    // Try to get values from localstorgae
-    const storageArticles = localStorage.getItem('articles')
+  constructor(private articleService: ArticleService) {}
 
-    // If no values found from localstorage, return early
-    if (!storageArticles) {
-      return
-    }
-    
-    // Turn storage value into a proper array and assign it to articles state
-    const parsedArticles = JSON.parse(storageArticles)
-    this.articles = parsedArticles
+  ngOnInit() {
+    this.articles = this.articleService.getArticles()
   }
 
-  // Push new article to array and update localstorage
+  // // Push new article to array and update localstorage
   addArticle(article: Article): void {
-    this.articles.push(article)
-    localStorage.setItem("articles",JSON.stringify(this.articles))
-  }
-
-  // Delete a specific article from array and update localstorage
-  removeArticle(index: number): void {
-    this.articles.splice(index, 1)
-    localStorage.setItem("articles", JSON.stringify(this.articles))
+    this.articleService.addArticle(article)
   }
 
   // Open modal for adding new article

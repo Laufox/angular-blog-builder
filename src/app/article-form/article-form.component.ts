@@ -9,5 +9,6 @@ import { Article } from '../article';
 export class ArticleFormComponent {
   testPrint(article: Article): void {
     console.log(article)
+    localStorage.setItem('articles', JSON.stringify(article))
   }
 }
