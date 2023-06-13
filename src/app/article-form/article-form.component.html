@@ -1,15 +1,20 @@
-<div class="article-form-wrapper">
-    <div class="article-form-container">
+<div 
+    class="article-form-wrapper"
+    (click)="closeForm()"
+>
+    <div class="article-form-container" (click)="$event.stopPropagation()">
         <p
             (click)="closeForm()"
         >
             X
         </p>
         
-        <span>Title:</span>
+        <span>* Title:</span>
         <input type="text" #title />
-        <span>Body:</span>
+        <p *ngIf="formErrors.title">This field is required</p>
+        <span>* Body:</span>
         <textarea #body></textarea>
+        <p *ngIf="formErrors.body">This field is required</p>
         
         <button
             (click)="addArticle({
@@ -17,7 +22,7 @@
                 date: '230608',
                 author: 'John Doe',
                 body: body.value
-            });title.value='';body.value=''"
+            })"
         >Add</button>
     </div>
 </div>

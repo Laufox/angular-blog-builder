@@ -11,6 +11,11 @@ export class ArticleFormComponent {
 
   @Output() toggleArticleForm = new EventEmitter<boolean>()
 
+  formErrors = {
+    title: false,
+    body: false
+  }
+
   constructor(private articleService: ArticleService) {}
 
   closeForm() {
@@ -18,6 +23,11 @@ export class ArticleFormComponent {
   }
 
   addArticle(article: Article): void {
+    this.formErrors.title = !article.title
+    this.formErrors.body = !article.body
+    if (this.formErrors.title || this.formErrors.body) {
+      return
+    }
     this.articleService.addArticle(article)
     this.closeForm()
   }
