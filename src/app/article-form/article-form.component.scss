@@ -15,9 +15,55 @@
         width: 800px;
         background-color: aliceblue;
         border-radius: 5px;
+        padding: 20px;
 
         display: flex;
         flex-flow: column;
         align-items: flex-start;
+
+        .close-button {
+            border: 1px solid black;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            color: brown;
+            align-self: flex-end;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        .form-fields-container {
+            display: flex;
+            flex-flow: column;
+            gap: 10px;
+
+            .form-field-wrapper {
+                display: flex;
+                flex-flow: column;
+
+                #title-input {
+                    padding: 3px;
+                }
+
+                .input-error {
+                    color: brown;
+                }
+            }
+        }
+
+        .add-article-button {
+            margin-top: 15px;
+            padding: 5px;
+            border-radius: 5px;
+            outline: none;
+            border: 1px solid black;
+            cursor: pointer;
+        }
     }
 }

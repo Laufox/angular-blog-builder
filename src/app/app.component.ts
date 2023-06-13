@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angular-blog-builder';
-  articleOpen: boolean = false
+  articleOpen: boolean = true
 
   toggleArticleForm(state: boolean) {
     this.articleOpen = state

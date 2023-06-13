@@ -3,20 +3,30 @@
     (click)="closeForm()"
 >
     <div class="article-form-container" (click)="$event.stopPropagation()">
-        <p
+        <div
+            class="close-button"
             (click)="closeForm()"
         >
             X
-        </p>
+        </div>
+
+        <h2>New article</h2>
         
-        <span>* Title:</span>
-        <input type="text" #title />
-        <p *ngIf="formErrors.title">This field is required</p>
-        <span>* Body:</span>
-        <textarea #body></textarea>
-        <p *ngIf="formErrors.body">This field is required</p>
+        <div class="form-fields-container">
+            <div class="form-field-wrapper">
+                <label for="title-input">* Title:</label>
+                <input type="text" #title id="title-input" />
+                <p *ngIf="formErrors.title" class="input-error">This field is required</p>
+            </div>
+            <div class="form-field-wrapper">
+                <label for="body-input">* Body:</label>
+                <textarea #body id="body-input"></textarea>
+                <p *ngIf="formErrors.body" class="input-error">This field is required</p>
+            </div>
+        </div>
         
         <button
+            class="add-article-button"
             (click)="addArticle({
                 title: title.value,
                 date: '230608',
