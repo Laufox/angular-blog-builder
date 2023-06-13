@@ -1,10 +1,16 @@
 .header-wrapper {
 
+    margin: 20px 0;
+
     .header-container {
         height: 100%;
         max-width: 1400px;
         margin: auto;
 
-        background-color: #eee;
+        // background-color: #eee;
+
+        h1 {
+            font-size: 40pt;
+        }
     }
 }

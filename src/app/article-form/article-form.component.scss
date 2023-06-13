@@ -20,6 +20,7 @@
         display: flex;
         flex-flow: column;
         align-items: flex-start;
+        // background-color: burlywood;
 
         .close-button {
             border: 1px solid black;
@@ -42,13 +43,25 @@
             display: flex;
             flex-flow: column;
             gap: 10px;
+            // background-color: blueviolet;
+            align-self: stretch;
 
             .form-field-wrapper {
                 display: flex;
                 flex-flow: column;
+                // background-color: aquamarine;
+                // width: 100%;
+
+                #title-input, #body-input {
+                    padding: 5px;
+                }
 
                 #title-input {
-                    padding: 3px;
+                    font-size: 16pt;
+                }
+
+                #body-input {
+                    font-size: 14pt;
                 }
 
                 .input-error {

@@ -6,15 +6,30 @@
             + Article
         </button>
         <div class="article-container">
-            <div *ngFor="let article of articles; let i=index">
-                <h2>{{article.title}}</h2>
-                <span>{{article.date}} | {{article.author | uppercase}}</span>
-                <p>{{article.body}}</p>
-                <button
-                    (click)="removeArticle(i)"
-                >
-                    Delete
-                </button>
+            <div *ngFor="let article of articles; let i=index" class="article-wrapper">
+                <div class="article-content">
+                    <div class="article-heading-actions">
+                        <h2>{{article.title}}</h2>
+                        <div class="article-actions">
+                            <button
+                                (click)="removeArticle(i)"
+                            >
+                                Delete
+                            </button>
+                        </div>
+                    </div>
+                    <span class="article-meta">{{article.date}} | {{article.author | uppercase}}</span>
+                    <div class="article-body">
+                        <p class="article-body-content">
+                            {{article.body}}
+                        </p>
+                        <div class="article-body-fadeout"></div>
+                    </div>
+                    <button class="button-read-more">Read more</button>
+                </div>
+                <div class="article-image">
+                    <p>Image to be</p>
+                </div>
             </div>
         </div>
 
