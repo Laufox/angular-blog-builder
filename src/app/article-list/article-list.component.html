@@ -1,21 +1,41 @@
 <div class="article-list-wrapper">
     <div class="article-list-container">
-        <button
+        <div
+            class="new-article-btn"
+            title="Add new article"
+            role="button"
             (click)="openForm()"
         >
-            + Article
-        </button>
+            <img src="../../assets/newarticleplus.png" alt="Add" />
+            <p>New article</p>
+        </div>
         <div class="article-container">
             <div *ngFor="let article of articles; let i=index" class="article-wrapper">
                 <div class="article-content">
                     <div class="article-heading-actions">
                         <h2>{{article.title}}</h2>
-                        <div class="article-actions">
-                            <button
+                        <div 
+                            class="article-actions"
+                            title="Remove article"
+                            role="btn"
+                            (click)="removeArticle(i)"
+                        >
+                            <img src="../../assets/delete-article-icon.png" alt="Delete" />
+                            <p>Delete</p>
+                            <!-- <div
+                                class="delete-article-btn"
+                                title="Remove article"
+                                role="btn"
+                                (click)="removeArticle(i)"
+                            >
+                                <img src="../../assets/delete-article-icon.png" alt="Delete" />
+                                <p>Delete</p>
+                            </div> -->
+                            <!-- <button
                                 (click)="removeArticle(i)"
                             >
                                 Delete
-                            </button>
+                            </button> -->
                         </div>
                     </div>
                     <span class="article-meta">{{article.date}} | {{article.author | uppercase}}</span>
@@ -25,11 +45,15 @@
                         </p>
                         <div class="article-body-fadeout"></div>
                     </div>
-                    <button class="button-read-more">Read more</button>
+                    <div
+                        class="read-more-btn"
+                        title="Read full article"
+                        role="button"
+                    >
+                        Read more
+                    </div>
                 </div>
-                <div class="article-image">
-                    <p>Image to be</p>
-                </div>
+                <div class="article-image"></div>
             </div>
         </div>
 

@@ -10,6 +10,30 @@
         justify-content: flex-end;
         align-items: center;
         gap: 1rem;
+
+        .new-article-btn-menu {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+
+            p {
+                font-weight: 600;
+                font-size: 20px;
+            }
+
+            &:hover {
+                p {
+                    text-decoration: underline;
+                }
+            }
+        }
+
+        img {
+            width: 25px;
+            height: 25px;
+            cursor: pointer;
+        }
     }
     
 }
