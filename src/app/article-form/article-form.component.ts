@@ -32,8 +32,4 @@ export class ArticleFormComponent {
     this.closeForm()
   }
 
-  testPrint(article: Article): void {
-    console.log(article)
-    localStorage.setItem('articles', JSON.stringify(article))
-  }
 }

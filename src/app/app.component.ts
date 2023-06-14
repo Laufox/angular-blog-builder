@@ -6,11 +6,23 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'angular-blog-builder';
+  blogTitle = 'My blog title';
   articleOpen: boolean = false
+  aboutModalOpen: boolean = false
+  settingsModalOpen: boolean = false
 
   toggleArticleForm(state: boolean) {
     this.articleOpen = state
   }
+
+  toggleAboutModal(state: boolean) {
+    this.aboutModalOpen = state
+  }
+
+  toggleSettingsModal(state: boolean) {
+    this.settingsModalOpen = state
+  }
+
+  // Update profile
 
 }

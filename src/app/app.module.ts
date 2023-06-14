@@ -6,6 +6,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HeaderComponent } from './header/header.component';
 import { ArticleListComponent } from './article-list/article-list.component';
 import { ArticleFormComponent } from './article-form/article-form.component';
+import { SettingsModalComponent } from './settings-modal/settings-modal.component';
+import { AboutModalComponent } from './about-modal/about-modal.component';
 
 @NgModule({
   declarations: [
@@ -13,7 +15,9 @@ import { ArticleFormComponent } from './article-form/article-form.component';
     NavbarComponent,
     HeaderComponent,
     ArticleListComponent,
-    ArticleFormComponent
+    ArticleFormComponent,
+    SettingsModalComponent,
+    AboutModalComponent
   ],
   imports: [
     BrowserModule

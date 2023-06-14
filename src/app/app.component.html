@@ -1,4 +1,6 @@
-<app-navbar (toggleArticleForm)="toggleArticleForm($event)" />
-<app-header />
+<app-navbar (toggleArticleForm)="toggleArticleForm($event)" (toggleAboutModal)="toggleAboutModal($event)" (toggleSettingsModal)="toggleSettingsModal($event)" />
+<app-header [blogTitle]="blogTitle" />
 <app-article-list (toggleArticleForm)="toggleArticleForm($event)" />
 <app-article-form *ngIf="articleOpen" (toggleArticleForm)="toggleArticleForm($event)" />
+<app-about-modal *ngIf="aboutModalOpen" (toggleAboutModal)="toggleAboutModal($event)" />
+<app-settings-modal *ngIf="settingsModalOpen" (toggleSettingsModal)="toggleSettingsModal($event)" />
