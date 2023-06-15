@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
   selector: 'app-navbar',
@@ -10,6 +10,7 @@ export class NavbarComponent {
   @Output() toggleArticleForm = new EventEmitter<boolean>()
   @Output() toggleAboutModal = new EventEmitter<boolean>()
   @Output() toggleSettingsModal = new EventEmitter<boolean>()
+  @Input() currentAuthorName = ''
 
   openForm() {
     this.toggleArticleForm.emit(true)

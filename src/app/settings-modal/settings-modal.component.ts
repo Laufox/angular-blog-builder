@@ -36,5 +36,7 @@ export class SettingsModalComponent {
     if (settings.authorName) {
       this.setCurrentAuthorName.emit(settings.authorName)
     }
+
+    this.closeModal()
   }
 }
