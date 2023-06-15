@@ -39,5 +39,38 @@
             margin-bottom: 20px;
         }
 
+        .form-fields-container {
+            display: flex;
+            flex-flow: column;
+            gap: 10px;
+            // background-color: blueviolet;
+            align-self: stretch;
+
+            .form-field-wrapper {
+                display: flex;
+                flex-flow: column;
+                // background-color: aquamarine;
+                // width: 100%;
+
+                #blog-title, #author-name {
+                    padding: 5px;
+                    font-size: 16pt;
+                }
+
+                .input-error {
+                    color: brown;
+                }
+            }
+        }
+
+        .save-button {
+            margin-top: 15px;
+            padding: 5px;
+            border-radius: 5px;
+            outline: none;
+            border: 1px solid black;
+            cursor: pointer;
+        }
+
     }
 }
