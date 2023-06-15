@@ -13,5 +13,25 @@
         <h2>Website setting</h2>
 
         <p>Settings about the website</p>
+
+        <div class="form-fields-container">
+            <div class="form-field-wrapper">
+                <label for="blog-title">* Blog title:</label>
+                <input type="text" #blogTitle id="blog-title" value="{{currentBlogTitle}}" />
+                <p *ngIf="formErrors.blogTitle" class="input-error">This field is required</p>
+            </div>
+            <div class="form-field-wrapper">
+                <label for="author-name">* Author name:</label>
+                <input type="text" #authorName id="author-name" value="{{currentAuthorName}}" />
+                <p *ngIf="formErrors.authorName" class="input-error">This field is required</p>
+            </div>
+        </div>
+        
+        <button
+            class="add-article-button"
+            (click)="
+                updateSettings({blogTitle: blogTitle.value, authorName: authorName.value})
+            "
+        >Save</button>
     </div>
 </div>

@@ -6,7 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  blogTitle = 'My blog title';
+  currentBlogTitle = 'My blog title'
+  currentAuthorName = "John Doe"
   articleOpen: boolean = false
   aboutModalOpen: boolean = false
   settingsModalOpen: boolean = false
@@ -23,6 +24,12 @@ export class AppComponent {
     this.settingsModalOpen = state
   }
 
-  // Update profile
+  setCurrentBlogTitle(title: string) {
+    this.currentBlogTitle = title
+  }
+
+  setCurrentAuthorName(name: string) {
+    this.currentAuthorName = name
+  }
 
 }
