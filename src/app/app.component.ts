@@ -12,6 +12,11 @@ export class AppComponent {
   aboutModalOpen: boolean = false
   settingsModalOpen: boolean = false
 
+  ngOnInit() {
+    this.currentBlogTitle = localStorage.getItem("blogTitle") ?? "My blog title"
+    this.currentAuthorName = localStorage.getItem("authorName") ?? "John Doe"
+  }
+
   toggleArticleForm(state: boolean) {
     this.articleOpen = state
   }
@@ -26,10 +31,12 @@ export class AppComponent {
 
   setCurrentBlogTitle(title: string) {
     this.currentBlogTitle = title
+    localStorage.setItem("blogTitle", this.currentBlogTitle)
   }
 
   setCurrentAuthorName(name: string) {
     this.currentAuthorName = name
+    localStorage.setItem("authorName", this.currentAuthorName)
   }
 
 }
