@@ -14,28 +14,25 @@
                 <div class="article-content">
                     <div class="article-heading-actions">
                         <h2>{{article.title}}</h2>
-                        <div 
-                            class="article-actions"
-                            title="Remove article"
-                            role="btn"
-                            (click)="removeArticle(i)"
-                        >
-                            <img src="../../assets/delete-article-icon.png" alt="Delete" />
-                            <p>Delete</p>
-                            <!-- <div
-                                class="delete-article-btn"
+                        <div class="article-actions-container">
+                            <div 
+                                class="article-actions action-update"
+                                title="Update article"
+                                role="btn"
+                                (click)="updateArticle(i)"
+                            >
+                                <img src="../../assets/delete-article-icon.png" alt="Update" />
+                                <p>Update</p>
+                            </div>
+                            <div 
+                                class="article-actions action-delete"
                                 title="Remove article"
                                 role="btn"
                                 (click)="removeArticle(i)"
                             >
                                 <img src="../../assets/delete-article-icon.png" alt="Delete" />
                                 <p>Delete</p>
-                            </div> -->
-                            <!-- <button
-                                (click)="removeArticle(i)"
-                            >
-                                Delete
-                            </button> -->
+                            </div>
                         </div>
                     </div>
                     <span class="article-meta">{{article.date}} | {{article.author | uppercase}}</span>

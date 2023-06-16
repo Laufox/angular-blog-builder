@@ -11,14 +11,25 @@ export class AppComponent {
   articleOpen: boolean = false
   aboutModalOpen: boolean = false
   settingsModalOpen: boolean = false
+  selectedArticle: {title: string, body: string} = {title: '', body: ''}
 
   ngOnInit() {
     this.currentBlogTitle = localStorage.getItem("blogTitle") ?? "My blog title"
     this.currentAuthorName = localStorage.getItem("authorName") ?? "John Doe"
   }
 
-  toggleArticleForm(state: boolean) {
-    this.articleOpen = state
+  toggleArticleForm(arg: {state: boolean, article ?: {title: string, body: string}} ) {
+    console.log("art", arg.article)
+    if (arg.article) {
+      this.selectedArticle.title = arg.article.title
+      this.selectedArticle.body = arg.article.body
+      this.articleOpen = arg.state
+      return
+    }
+
+    this.selectedArticle.title = ''
+    this.selectedArticle.body = ''
+    this.articleOpen = arg.state
   }
 
   toggleAboutModal(state: boolean) {

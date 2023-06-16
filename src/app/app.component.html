@@ -10,6 +10,7 @@
     *ngIf="articleOpen" 
     (toggleArticleForm)="toggleArticleForm($event)" 
     [currentAuthorName]="currentAuthorName"
+    [selectedArticle]="selectedArticle"
 />
 <app-about-modal *ngIf="aboutModalOpen" (toggleAboutModal)="toggleAboutModal($event)" />
 <app-settings-modal 

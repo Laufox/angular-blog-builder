@@ -9,8 +9,9 @@ import { ArticleService } from '../article-service.service';
 })
 export class ArticleFormComponent {
 
-  @Output() toggleArticleForm = new EventEmitter<boolean>()
+  @Output() toggleArticleForm = new EventEmitter<{state: boolean, article?: {title: string, body: string}}>()
   @Input() currentAuthorName = ''
+  @Input() selectedArticle: {title: string, body: string} = {title: '', body: ''}
 
   formErrors = {
     title: false,
@@ -20,7 +21,7 @@ export class ArticleFormComponent {
   constructor(private articleService: ArticleService) {}
 
   closeForm() {
-    this.toggleArticleForm.emit(false)
+    this.toggleArticleForm.emit({state: false})
   }
 
   addArticle(content: {title: string, body: string}): void {

@@ -5,3 +5,11 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+body {
+    scrollbar-width: none;
+}
+
+body::-webkit-scrollbar{
+    display: none;
+}

@@ -7,13 +7,13 @@ import { Component, Output, EventEmitter, Input } from '@angular/core';
 })
 export class NavbarComponent {
 
-  @Output() toggleArticleForm = new EventEmitter<boolean>()
+  @Output() toggleArticleForm = new EventEmitter<{state: boolean, article?: {title: string, body: string}}>()
   @Output() toggleAboutModal = new EventEmitter<boolean>()
   @Output() toggleSettingsModal = new EventEmitter<boolean>()
   @Input() currentAuthorName = ''
 
   openForm() {
-    this.toggleArticleForm.emit(true)
+    this.toggleArticleForm.emit({state: true})
   }
 
   openAboutModal() {

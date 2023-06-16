@@ -15,12 +15,12 @@
         <div class="form-fields-container">
             <div class="form-field-wrapper">
                 <label for="title-input">* Title:</label>
-                <input type="text" #title id="title-input"  />
+                <input type="text" #title id="title-input" value="{{selectedArticle.title}}"  />
                 <p *ngIf="formErrors.title" class="input-error">This field is required</p>
             </div>
             <div class="form-field-wrapper">
                 <label for="body-input">* Body:</label>
-                <textarea #body id="body-input" rows="20"></textarea>
+                <textarea #body id="body-input" rows="20">{{selectedArticle.body}}</textarea>
                 <p *ngIf="formErrors.body" class="input-error">This field is required</p>
             </div>
         </div>

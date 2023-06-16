@@ -49,32 +49,39 @@
                             font-size: 24pt;
                         }
 
-                        .article-actions {
+                        .article-actions-container {
                             display: flex;
-                            justify-content: center;
-                            align-items: center;
-                            gap: 5px;
-                            padding: 5px 10px;
-                            border-radius: 5px;
-                            background-color: #A50000;
-                            color: #E4E4E4;
-                            cursor: pointer;
-                            align-self: flex-end;
-
-                            p {
+                            gap: 10px;
+                            
+                            .article-actions {
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                gap: 5px;
+                                padding: 5px 10px;
+                                border-radius: 5px;
                                 color: #E4E4E4;
-                            }
-
-                            &:hover {
-
-                                // border: 1px solid black;
-                                outline: 1px solid black;
-
+                                cursor: pointer;
+                                align-self: flex-end;
+    
                                 p {
-                                    // text-decoration: underline;
+                                    color: #E4E4E4;
+                                }
+    
+                                &:hover {
+                                    outline: 1px solid black;
                                 }
                             }
+    
+                            .article-actions.action-update {
+                                background-color: #0000A5;
+                            }
+    
+                            .article-actions.action-delete {
+                                background-color: #A50000;
+                            }
                         }
+
                     }
 
                     .article-meta {

@@ -9,7 +9,7 @@ import { ArticleService } from '../article-service.service';
 })
 export class ArticleListComponent {
   
-  @Output() toggleArticleForm = new EventEmitter<boolean>()
+  @Output() toggleArticleForm = new EventEmitter<{state: boolean, article?: {title: string, body: string}}>()
   articles: Article[] = []
   articleFormOpen: boolean = false
 
@@ -19,13 +19,18 @@ export class ArticleListComponent {
     this.articles = this.articleService.getArticles()
   }
 
+  updateArticle(index: number): void {
+    console.log("to update article ", index)
+    this.toggleArticleForm.emit({state: true, article: {title: this.articles[index].title, body: this.articles[index].body}})
+  }
+
   removeArticle(index: number): void {
     this.articleService.removeArticle(index)
   }
 
   // Open modal for adding new article
   openForm(): void {
-    this.toggleArticleForm.emit(true)
+    this.toggleArticleForm.emit({state: true})
   }
 
 }
