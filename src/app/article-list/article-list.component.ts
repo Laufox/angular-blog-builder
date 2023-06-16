@@ -19,6 +19,16 @@ export class ArticleListComponent {
     this.articles = this.articleService.getArticles()
   }
 
+  checkContentHeight(index: number) {
+    const elm = document.querySelector(`.article-body-content-${index}`)
+
+    if (!elm?.clientHeight) {
+      return false
+    }
+
+    return elm.clientHeight > 300
+  }
+
   updateArticle(index: number): void {
     console.log("to update article ", index)
     this.toggleArticleForm.emit({state: true, article: {title: this.articles[index].title, body: this.articles[index].body, index}})
