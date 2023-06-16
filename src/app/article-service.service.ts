@@ -36,6 +36,12 @@ export class ArticleService {
     localStorage.setItem("articles",JSON.stringify(this.articles))
   }
 
+  updateArticle(index: number, content: {title: string, body: string}) {
+    this.articles[index].title = content.title
+    this.articles[index].body = content.body
+    localStorage.setItem("articles",JSON.stringify(this.articles))
+  }
+
   // Delete a specific article from array and update localstorage
   removeArticle(index: number): void {
     this.articles.splice(index, 1)

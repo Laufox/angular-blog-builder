@@ -9,9 +9,9 @@ import { ArticleService } from '../article-service.service';
 })
 export class ArticleFormComponent {
 
-  @Output() toggleArticleForm = new EventEmitter<{state: boolean, article?: {title: string, body: string}}>()
+  @Output() toggleArticleForm = new EventEmitter<{state: boolean, article?: {title: string, body: string, index: number}}>()
   @Input() currentAuthorName = ''
-  @Input() selectedArticle: {title: string, body: string} = {title: '', body: ''}
+  @Input() selectedArticle: {title: string, body: string, index: number | null} = {title: '', body: '', index: null}
 
   formErrors = {
     title: false,
@@ -38,7 +38,11 @@ export class ArticleFormComponent {
       body: content.body
     }
 
-    this.articleService.addArticle(newArticle)
+    if (this.selectedArticle.index !== null) {
+      this.articleService.updateArticle(this.selectedArticle.index, content)
+    } else {
+      this.articleService.addArticle(newArticle)
+    }
     this.closeForm()
   }
 
