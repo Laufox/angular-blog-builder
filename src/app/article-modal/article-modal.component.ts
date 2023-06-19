@@ -1,5 +1,6 @@
 import { Component, Output, Input, EventEmitter } from '@angular/core';
 import { ArticleService } from '../article-service.service';
+import { Article } from '../article';
 
 @Component({
   selector: 'app-article-modal',
@@ -8,13 +9,14 @@ import { ArticleService } from '../article-service.service';
 })
 export class ArticleModalComponent {
   @Output() toggleArticleModal = new EventEmitter<{state: boolean, article?: {title: string, body: string, index: number}}>()
-  @Input() selectedArticle: {title: string, body: string, index: number | null} = {title: '', body: '', index: null}
+  @Input() currentArticleIndex: number | null = null
+  article: Article = {title: '', author: '', date: '', body: ''}
 
   constructor(private articleService: ArticleService) {}
 
   ngOnInit() {
-    if(this.selectedArticle.index !== null) {
-      console.log(this.articleService.articles[this.selectedArticle.index])
+    if(this.currentArticleIndex !== null) {
+      this.article = this.articleService.articles[this.currentArticleIndex]
     }
   }
 

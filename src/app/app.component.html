@@ -12,7 +12,7 @@
     [currentAuthorName]="currentAuthorName"
     [selectedArticle]="selectedArticle"
 />
-<app-article-modal *ngIf="articleModalOpen" (toggleArticleModal)="toggleArticleModal($event)" />
+<app-article-modal *ngIf="articleModalOpen" (toggleArticleModal)="toggleArticleModal($event)" [currentArticleIndex]="currentArticleIndex" />
 <app-about-modal *ngIf="aboutModalOpen" (toggleAboutModal)="toggleAboutModal($event)" />
 <app-settings-modal 
     *ngIf="settingsModalOpen" 

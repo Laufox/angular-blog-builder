@@ -13,6 +13,7 @@ export class AppComponent {
   settingsModalOpen: boolean = false
   articleModalOpen: boolean = false
   selectedArticle: {title: string, body: string, index: number | null} = {title: '', body: '', index: null}
+  currentArticleIndex: number | null = null
 
   ngOnInit() {
     this.currentBlogTitle = localStorage.getItem("blogTitle") ?? "My blog title"
@@ -42,8 +43,9 @@ export class AppComponent {
     this.settingsModalOpen = state
   }
 
-  toggleArticleModal(arg: {state: boolean, article ?: {title: string, body: string, index: number}}) {
+  toggleArticleModal(arg: {state: boolean, index?: number}) {
     this.articleModalOpen = arg.state
+    this.currentArticleIndex = (arg.index || arg.index === 0) ? arg.index : null
   }
 
   setCurrentBlogTitle(title: string) {
