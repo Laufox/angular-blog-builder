@@ -8,6 +8,7 @@ import { ArticleListComponent } from './article-list/article-list.component';
 import { ArticleFormComponent } from './article-form/article-form.component';
 import { SettingsModalComponent } from './settings-modal/settings-modal.component';
 import { AboutModalComponent } from './about-modal/about-modal.component';
+import { ArticleModalComponent } from './article-modal/article-modal.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { AboutModalComponent } from './about-modal/about-modal.component';
     ArticleListComponent,
     ArticleFormComponent,
     SettingsModalComponent,
-    AboutModalComponent
+    AboutModalComponent,
+    ArticleModalComponent
   ],
   imports: [
     BrowserModule

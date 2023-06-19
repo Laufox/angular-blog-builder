@@ -5,13 +5,14 @@
     [currentAuthorName]="currentAuthorName"
 />
 <app-header [currentBlogTitle]="currentBlogTitle" />
-<app-article-list (toggleArticleForm)="toggleArticleForm($event)" />
+<app-article-list (toggleArticleForm)="toggleArticleForm($event)" (toggleArticleModal)="toggleArticleModal($event)" />
 <app-article-form 
     *ngIf="articleOpen" 
     (toggleArticleForm)="toggleArticleForm($event)" 
     [currentAuthorName]="currentAuthorName"
     [selectedArticle]="selectedArticle"
 />
+<app-article-modal *ngIf="articleModalOpen" (toggleArticleModal)="toggleArticleModal($event)" />
 <app-about-modal *ngIf="aboutModalOpen" (toggleAboutModal)="toggleAboutModal($event)" />
 <app-settings-modal 
     *ngIf="settingsModalOpen" 

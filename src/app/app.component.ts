@@ -11,6 +11,7 @@ export class AppComponent {
   articleOpen: boolean = false
   aboutModalOpen: boolean = false
   settingsModalOpen: boolean = false
+  articleModalOpen: boolean = false
   selectedArticle: {title: string, body: string, index: number | null} = {title: '', body: '', index: null}
 
   ngOnInit() {
@@ -19,7 +20,6 @@ export class AppComponent {
   }
 
   toggleArticleForm(arg: {state: boolean, article ?: {title: string, body: string, index: number}} ) {
-    console.log("art", arg.article)
     if (arg.article) {
       this.selectedArticle.title = arg.article.title
       this.selectedArticle.body = arg.article.body
@@ -40,6 +40,10 @@ export class AppComponent {
 
   toggleSettingsModal(state: boolean) {
     this.settingsModalOpen = state
+  }
+
+  toggleArticleModal(arg: {state: boolean, article ?: {title: string, body: string, index: number}}) {
+    this.articleModalOpen = arg.state
   }
 
   setCurrentBlogTitle(title: string) {
