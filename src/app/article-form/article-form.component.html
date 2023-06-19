@@ -20,10 +20,14 @@
             </div>
             <div class="form-field-wrapper">
                 <label for="body-input">* Body:</label>
-                <textarea #body id="body-input" rows="20">{{selectedArticle.body}}</textarea>
+                <textarea #body id="body-input" rows="5">{{selectedArticle.body}}</textarea>
                 <p *ngIf="formErrors.body" class="input-error">This field is required</p>
             </div>
         </div>
+
+        <angular-editor [(ngModel)]="htmlContent" [config]="config"></angular-editor>
+
+        <div>{{htmlContent}}</div>
         
         <button
             class="add-article-button"

@@ -1,6 +1,7 @@
 import { Component, Output, EventEmitter, Input } from '@angular/core';
 import { Article } from '../article';
 import { ArticleService } from '../article-service.service';
+import { AngularEditorConfig } from '@kolkov/angular-editor/public-api';
 
 @Component({
   selector: 'app-article-form',
@@ -16,6 +17,37 @@ export class ArticleFormComponent {
   formErrors = {
     title: false,
     body: false
+  }
+
+  htmlContent?: Event
+
+  config: AngularEditorConfig = {
+    editable: true,
+    spellcheck: true,
+    height: '15rem',
+    minHeight: '5rem',
+    placeholder: 'Enter text here...',
+    translate: 'no',
+    defaultParagraphSeparator: 'p',
+    defaultFontName: 'Arial',
+    toolbarHiddenButtons: [
+      ['bold']
+      ],
+    customClasses: [
+      {
+        name: "quote",
+        class: "quote",
+      },
+      {
+        name: 'redText',
+        class: 'redText'
+      },
+      {
+        name: "titleText",
+        class: "titleText",
+        tag: "h1",
+      },
+    ]
   }
 
   constructor(private articleService: ArticleService) {}

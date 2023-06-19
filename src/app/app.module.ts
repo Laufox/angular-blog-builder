@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { AngularEditorModule } from '@kolkov/angular-editor';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HeaderComponent } from './header/header.component';
@@ -9,6 +9,8 @@ import { ArticleFormComponent } from './article-form/article-form.component';
 import { SettingsModalComponent } from './settings-modal/settings-modal.component';
 import { AboutModalComponent } from './about-modal/about-modal.component';
 import { ArticleModalComponent } from './article-modal/article-modal.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http'
 
 @NgModule({
   declarations: [
@@ -22,7 +24,7 @@ import { ArticleModalComponent } from './article-modal/article-modal.component';
     ArticleModalComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule, AngularEditorModule, FormsModule, HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
