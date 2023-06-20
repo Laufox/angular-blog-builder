@@ -23,6 +23,12 @@
                 <input type="text" #authorName id="author-name" value="{{currentAuthorName}}" />
                 <p *ngIf="formErrors.authorName" class="input-error">This field is required</p>
             </div>
+            <div class="form-field-wrapper">
+                <label for="banner">* Banner:</label>
+                <input type="file" #bannerInput id="banner" [(ngModel)]="bannerImage" (change)="test($event)" />
+                <img *ngIf="bannerImgSource" src="{{bannerImgSource}}" alt="test-image" />
+                <!-- <p *ngIf="formErrors.authorName" class="input-error">This field is required</p> -->
+            </div>
         </div>
         
         <button

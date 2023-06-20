@@ -17,6 +17,18 @@ export class SettingsModalComponent {
     authorName: false
   }
 
+  bannerImage?: File
+
+  bannerImgSource?: any
+
+  test(e: any) {
+    console.log(e.target)
+
+    if (e.target.files?.length) {
+      this.bannerImgSource = URL.createObjectURL(e.target.files[0])
+    }
+  }
+
   closeModal() {
     this.toggleSettingsModal.emit(false)
   }
