@@ -10,13 +10,12 @@ import { AngularEditorConfig } from '@kolkov/angular-editor/public-api';
 })
 export class ArticleFormComponent {
 
-  @Output() toggleArticleForm = new EventEmitter<{state: boolean, article?: {title: string, htmlContent: Event | undefined, body: string, index: number}}>()
+  @Output() toggleArticleForm = new EventEmitter<{state: boolean, article?: {title: string, htmlContent: Event | undefined, index: number}}>()
   @Input() currentAuthorName = ''
-  @Input() selectedArticle: {title: string, htmlContent: Event | undefined, body: string, index: number | null} = {title: '', htmlContent: undefined, body: '', index: null}
+  @Input() selectedArticle: {title: string, htmlContent: Event | undefined, index: number | null} = {title: '', htmlContent: undefined, index: null}
 
   formErrors = {
-    title: false,
-    body: false
+    title: false
   }
 
   htmlContent?: Event
@@ -62,10 +61,9 @@ export class ArticleFormComponent {
     this.toggleArticleForm.emit({state: false})
   }
 
-  addArticle(content: {title: string, body: string}): void {
+  addArticle(content: {title: string}): void {
     this.formErrors.title = !content.title
-    this.formErrors.body = !content.body
-    if (this.formErrors.title || this.formErrors.body) {
+    if (this.formErrors.title) {
       return
     }
 
@@ -73,12 +71,11 @@ export class ArticleFormComponent {
       title: content.title,
       date: new Date().toUTCString().slice(5, 16),
       author: this.currentAuthorName,
-      body: content.body,
       htmlContent: this.htmlContent
     }
 
     if (this.selectedArticle.index !== null) {
-      this.articleService.updateArticle(this.selectedArticle.index, content)
+      this.articleService.updateArticle(this.selectedArticle.index, {title: content.title, htmlContent: this.htmlContent})
     } else {
       this.articleService.addArticle(newArticle)
     }

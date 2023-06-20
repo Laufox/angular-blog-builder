@@ -12,7 +12,7 @@ export class AppComponent {
   aboutModalOpen: boolean = false
   settingsModalOpen: boolean = false
   articleModalOpen: boolean = false
-  selectedArticle: {title: string, htmlContent: Event | undefined, body: string, index: number | null} = {title: '', htmlContent: undefined, body: '', index: null}
+  selectedArticle: {title: string, htmlContent: Event | undefined, index: number | null} = {title: '', htmlContent: undefined, index: null}
   currentArticleIndex: number | null = null
 
   ngOnInit() {
@@ -20,10 +20,9 @@ export class AppComponent {
     this.currentAuthorName = localStorage.getItem("authorName") ?? "John Doe"
   }
 
-  toggleArticleForm(arg: {state: boolean, article ?: {title: string, htmlContent: Event | undefined, body: string, index: number}} ) {
+  toggleArticleForm(arg: {state: boolean, article ?: {title: string, htmlContent: Event | undefined, index: number}} ) {
     if (arg.article) {
       this.selectedArticle.title = arg.article.title
-      this.selectedArticle.body = arg.article.body
       this.selectedArticle.index = arg.article.index
       this.selectedArticle.htmlContent = arg.article.htmlContent
       this.articleOpen = arg.state
@@ -31,7 +30,6 @@ export class AppComponent {
     }
 
     this.selectedArticle.title = ''
-    this.selectedArticle.body = ''
     this.selectedArticle.htmlContent = undefined
     this.selectedArticle.index = null
     this.articleOpen = arg.state

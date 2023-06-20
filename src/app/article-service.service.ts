@@ -36,9 +36,9 @@ export class ArticleService {
     localStorage.setItem("articles",JSON.stringify(this.articles))
   }
 
-  updateArticle(index: number, content: {title: string, body: string}) {
+  updateArticle(index: number, content: {title: string, htmlContent: Event | undefined}) {
     this.articles[index].title = content.title
-    this.articles[index].body = content.body
+    this.articles[index].htmlContent = content.htmlContent
     localStorage.setItem("articles",JSON.stringify(this.articles))
   }
 

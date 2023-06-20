@@ -9,7 +9,7 @@ import { ArticleService } from '../article-service.service';
 })
 export class ArticleListComponent {
   
-  @Output() toggleArticleForm = new EventEmitter<{state: boolean, article?: {title: string, htmlContent: Event | undefined, body: string, index: number}}>()
+  @Output() toggleArticleForm = new EventEmitter<{state: boolean, article?: {title: string, htmlContent: Event | undefined, index: number}}>()
   @Output() toggleArticleModal = new EventEmitter<{state: boolean, index: number}>()
   articles: Article[] = []
   articleFormOpen: boolean = false
@@ -31,7 +31,7 @@ export class ArticleListComponent {
   }
 
   updateArticle(index: number): void {
-    this.toggleArticleForm.emit({state: true, article: {title: this.articles[index].title, htmlContent: this.articles[index].htmlContent, body: this.articles[index].body, index}})
+    this.toggleArticleForm.emit({state: true, article: {title: this.articles[index].title, htmlContent: this.articles[index].htmlContent, index}})
   }
 
   removeArticle(index: number): void {

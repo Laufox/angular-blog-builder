@@ -8,9 +8,9 @@ import { Article } from '../article';
   styleUrls: ['./article-modal.component.scss']
 })
 export class ArticleModalComponent {
-  @Output() toggleArticleModal = new EventEmitter<{state: boolean, article?: {title: string, body: string, index: number}}>()
+  @Output() toggleArticleModal = new EventEmitter<{state: boolean, article?: {title: string, index: number}}>()
   @Input() currentArticleIndex: number | null = null
-  article: Article = {title: '', author: '', date: '', body: '', htmlContent: undefined}
+  article: Article = {title: '', author: '', date: '', htmlContent: undefined}
 
   constructor(private articleService: ArticleService) {}
 

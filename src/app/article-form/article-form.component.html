@@ -18,11 +18,6 @@
                 <input type="text" #title id="title-input" value="{{selectedArticle.title}}"  />
                 <p *ngIf="formErrors.title" class="input-error">This field is required</p>
             </div>
-            <div class="form-field-wrapper">
-                <label for="body-input">* Body:</label>
-                <textarea #body id="body-input" rows="5">{{selectedArticle.body}}</textarea>
-                <p *ngIf="formErrors.body" class="input-error">This field is required</p>
-            </div>
         </div>
 
         <angular-editor [(ngModel)]="htmlContent" [config]="config"></angular-editor>
@@ -32,8 +27,7 @@
         <button
             class="add-article-button"
             (click)="addArticle({
-                title: title.value,
-                body: body.value
+                title: title.value
             })"
         >Add</button>
     </div>
