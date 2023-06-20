@@ -37,7 +37,7 @@
                     </div>
                     <span class="article-meta">{{article.date}} | {{article.author | uppercase}}</span>
                     <div class="article-body">
-                        <div [innerHTML]="article.htmlContent"></div>
+                        <div [innerHTML]="article.htmlContent" class="article-body-content-{{i}}"></div>
                         <div *ngIf="checkContentHeight(i)" class="article-body-fadeout"></div>
                     </div>
                     <div
