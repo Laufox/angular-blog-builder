@@ -10,9 +10,9 @@ import { AngularEditorConfig } from '@kolkov/angular-editor/public-api';
 })
 export class ArticleFormComponent {
 
-  @Output() toggleArticleForm = new EventEmitter<{state: boolean, article?: {title: string, body: string, index: number}}>()
+  @Output() toggleArticleForm = new EventEmitter<{state: boolean, article?: {title: string, htmlContent: Event | undefined, body: string, index: number}}>()
   @Input() currentAuthorName = ''
-  @Input() selectedArticle: {title: string, body: string, index: number | null} = {title: '', body: '', index: null}
+  @Input() selectedArticle: {title: string, htmlContent: Event | undefined, body: string, index: number | null} = {title: '', htmlContent: undefined, body: '', index: null}
 
   formErrors = {
     title: false,
@@ -52,6 +52,12 @@ export class ArticleFormComponent {
 
   constructor(private articleService: ArticleService) {}
 
+  ngOnInit() {
+    if (this.selectedArticle.index !== null) {
+      this.htmlContent = this.selectedArticle.htmlContent
+    }
+  }
+
   closeForm() {
     this.toggleArticleForm.emit({state: false})
   }
@@ -67,7 +73,8 @@ export class ArticleFormComponent {
       title: content.title,
       date: new Date().toUTCString().slice(5, 16),
       author: this.currentAuthorName,
-      body: content.body
+      body: content.body,
+      htmlContent: this.htmlContent
     }
 
     if (this.selectedArticle.index !== null) {

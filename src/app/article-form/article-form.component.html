@@ -27,7 +27,7 @@
 
         <angular-editor [(ngModel)]="htmlContent" [config]="config"></angular-editor>
 
-        <div>{{htmlContent}}</div>
+        <div [innerHTML]="htmlContent"></div>
         
         <button
             class="add-article-button"
