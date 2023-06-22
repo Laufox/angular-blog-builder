@@ -7,4 +7,5 @@ import { Component, Input } from '@angular/core';
 })
 export class HeaderComponent {
   @Input() currentBlogTitle = ''
+  @Input() bannerImage: string | ArrayBuffer | null = null
 }

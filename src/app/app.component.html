@@ -4,7 +4,7 @@
     (toggleSettingsModal)="toggleSettingsModal($event)" 
     [currentAuthorName]="currentAuthorName"
 />
-<app-header [currentBlogTitle]="currentBlogTitle" />
+<app-header [currentBlogTitle]="currentBlogTitle" [bannerImage]="bannerImage" />
 <app-article-list (toggleArticleForm)="toggleArticleForm($event)" (toggleArticleModal)="toggleArticleModal($event)" />
 <app-article-form 
     *ngIf="articleOpen" 
@@ -19,6 +19,8 @@
     (toggleSettingsModal)="toggleSettingsModal($event)" 
     (setCurrentBlogTitle)="setCurrentBlogTitle($event)" 
     (setCurrentAuthorName)="setCurrentAuthorName($event)" 
+    (setBannerImage)="setBannerImage($event)"
     [currentBlogTitle]="currentBlogTitle" 
     [currentAuthorName]="currentAuthorName" 
+    [bannerImage]="bannerImage"
 />

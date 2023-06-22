@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   currentBlogTitle = 'My blog title'
   currentAuthorName = "John Doe"
+  bannerImage: string | ArrayBuffer | null = null
   articleOpen: boolean = false
   aboutModalOpen: boolean = false
   settingsModalOpen: boolean = false
@@ -18,6 +19,10 @@ export class AppComponent {
   ngOnInit() {
     this.currentBlogTitle = localStorage.getItem("blogTitle") ?? "My blog title"
     this.currentAuthorName = localStorage.getItem("authorName") ?? "John Doe"
+    const storageBanner = localStorage.getItem('bannerImage')
+    if (storageBanner) {
+      this.bannerImage = JSON.parse(storageBanner)
+    }
   }
 
   toggleArticleForm(arg: {state: boolean, article ?: {title: string, htmlContent: Event | undefined, index: number}} ) {
@@ -56,6 +61,11 @@ export class AppComponent {
   setCurrentAuthorName(name: string) {
     this.currentAuthorName = name
     localStorage.setItem("authorName", this.currentAuthorName)
+  }
+
+  setBannerImage(image: ArrayBuffer) {
+    this.bannerImage = image
+    localStorage.setItem('bannerImage', JSON.stringify(image))
   }
 
 }
