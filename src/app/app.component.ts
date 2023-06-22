@@ -13,7 +13,7 @@ export class AppComponent {
   aboutModalOpen: boolean = false
   settingsModalOpen: boolean = false
   articleModalOpen: boolean = false
-  selectedArticle: {title: string, htmlContent: Event | undefined, index: number | null} = {title: '', htmlContent: undefined, index: null}
+  selectedArticle: {title: string, htmlContent: Event | undefined, index: number | null, image: string | ArrayBuffer | null} = {title: '', htmlContent: undefined, index: null, image: null}
   currentArticleIndex: number | null = null
 
   ngOnInit() {
@@ -25,11 +25,12 @@ export class AppComponent {
     }
   }
 
-  toggleArticleForm(arg: {state: boolean, article ?: {title: string, htmlContent: Event | undefined, index: number}} ) {
+  toggleArticleForm(arg: {state: boolean, article ?: {title: string, htmlContent: Event | undefined, index: number, image: string | ArrayBuffer | null}} ) {
     if (arg.article) {
       this.selectedArticle.title = arg.article.title
       this.selectedArticle.index = arg.article.index
       this.selectedArticle.htmlContent = arg.article.htmlContent
+      this.selectedArticle.image = arg.article.image
       this.articleOpen = arg.state
       return
     }
@@ -37,6 +38,7 @@ export class AppComponent {
     this.selectedArticle.title = ''
     this.selectedArticle.htmlContent = undefined
     this.selectedArticle.index = null
+    this.selectedArticle.image = null
     this.articleOpen = arg.state
   }
 

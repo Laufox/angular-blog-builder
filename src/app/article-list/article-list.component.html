@@ -49,7 +49,8 @@
                         Read more
                     </div>
                 </div>
-                <div class="article-image"></div>
+                <img *ngIf="article.image" src="{{article.image}}" />
+                <div *ngIf="!article.image" class="article-image"></div>
             </div>
         </div>
 

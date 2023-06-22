@@ -3,5 +3,6 @@ export interface Article {
     title: string,
     date: string,
     author: string,
-    htmlContent: Event | undefined
+    htmlContent: Event | undefined,
+    image?: string | ArrayBuffer | null
 }

@@ -20,6 +20,12 @@
             </div>
         </div>
 
+        <div class="form-field-wrapper">
+            <label for="banner">* image:</label>
+            <input type="file" id="banner" (change)="onImageChange($event)" />
+            <img *ngIf="localArticleImage" src="{{localArticleImage}}" alt="test-image" />
+        </div>
+
         <angular-editor [(ngModel)]="htmlContent" [config]="config"></angular-editor>
         
         <button
