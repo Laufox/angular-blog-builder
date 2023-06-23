@@ -36,12 +36,14 @@ export class ArticleService {
     localStorage.setItem("articles",JSON.stringify(this.articles))
   }
 
-  updateArticle(index: number, content: {title: string, htmlContent: Event | undefined, image?: string | ArrayBuffer | null}) {
-    this.articles[index].title = content.title
-    this.articles[index].htmlContent = content.htmlContent
-    if (content.image) {
-      this.articles[index].image = content.image
-    }
+  updateArticle(index: number, updatedArticle: Article) {
+    this.articles[index] = updatedArticle
+    this.articles[index].lastUpdated = new Date().toUTCString().slice(5, 16)
+    // this.articles[index].title = content.title
+    // this.articles[index].htmlContent = content.htmlContent
+    // if (content.image) {
+    //   this.articles[index].image = content.image
+    // }
     localStorage.setItem("articles",JSON.stringify(this.articles))
   }
 

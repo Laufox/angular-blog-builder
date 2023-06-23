@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Article } from './article';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,8 @@ export class AppComponent {
   aboutModalOpen: boolean = false
   settingsModalOpen: boolean = false
   articleModalOpen: boolean = false
-  selectedArticle: {title: string, htmlContent: Event | undefined, index: number | null, image: string | ArrayBuffer | null} = {title: '', htmlContent: undefined, index: null, image: null}
+  selectedArticle: Article | null = null
+  // selectedArticle: {title: string, htmlContent: Event | undefined, index: number | null, image: string | ArrayBuffer | null} = {title: '', htmlContent: undefined, index: null, image: null}
   currentArticleIndex: number | null = null
 
   ngOnInit() {
@@ -25,22 +27,27 @@ export class AppComponent {
     }
   }
 
-  toggleArticleForm(arg: {state: boolean, article ?: {title: string, htmlContent: Event | undefined, index: number, image: string | ArrayBuffer | null}} ) {
-    if (arg.article) {
-      this.selectedArticle.title = arg.article.title
-      this.selectedArticle.index = arg.article.index
-      this.selectedArticle.htmlContent = arg.article.htmlContent
-      this.selectedArticle.image = arg.article.image
-      this.articleOpen = arg.state
-      return
-    }
-
-    this.selectedArticle.title = ''
-    this.selectedArticle.htmlContent = undefined
-    this.selectedArticle.index = null
-    this.selectedArticle.image = null
+  toggleArticleForm(arg: {state: boolean, article?: Article}) {
+    this.selectedArticle = arg.article ?? null
     this.articleOpen = arg.state
   }
+
+  // toggleArticleForm(arg: {state: boolean, article ?: {title: string, htmlContent: Event | undefined, index: number, image: string | ArrayBuffer | null}} ) {
+  //   if (arg.article) {
+  //     this.selectedArticle.title = arg.article.title
+  //     this.selectedArticle.index = arg.article.index
+  //     this.selectedArticle.htmlContent = arg.article.htmlContent
+  //     this.selectedArticle.image = arg.article.image
+  //     this.articleOpen = arg.state
+  //     return
+  //   }
+
+  //   this.selectedArticle.title = ''
+  //   this.selectedArticle.htmlContent = undefined
+  //   this.selectedArticle.index = null
+  //   this.selectedArticle.image = null
+  //   this.articleOpen = arg.state
+  // }
 
   toggleAboutModal(state: boolean) {
     this.aboutModalOpen = state

@@ -10,9 +10,9 @@ import { AngularEditorConfig } from '@kolkov/angular-editor/public-api';
 })
 export class ArticleFormComponent {
 
-  @Output() toggleArticleForm = new EventEmitter<{state: boolean, article?: {title: string, htmlContent: Event | undefined, index: number, image: string | ArrayBuffer | null}}>()
+  @Output() toggleArticleForm = new EventEmitter<{state: boolean, article?: Article}>()
   @Input() currentAuthorName = ''
-  @Input() selectedArticle: {title: string, htmlContent: Event | undefined, index: number | null, image: string | ArrayBuffer | null} = {title: '', htmlContent: undefined, index: null, image: null}
+  @Input() selectedArticle: Article | null = null
 
   formErrors = {
     title: false
@@ -54,12 +54,15 @@ export class ArticleFormComponent {
   constructor(private articleService: ArticleService) {}
 
   ngOnInit() {
-    if (this.selectedArticle.index !== null) {
-      this.htmlContent = this.selectedArticle.htmlContent
-      if (this.selectedArticle.image) {
-        this.localArticleImage = this.selectedArticle.image
-      }
-    }
+    // if (this.selectedArticle) {
+
+    // }
+    // if (this.selectedArticle.index !== null) {
+    //   this.htmlContent = this.selectedArticle.htmlContent
+    //   if (this.selectedArticle.image) {
+    //     this.localArticleImage = this.selectedArticle.image
+    //   }
+    // }
   }
 
   onImageChange(e: any) {
@@ -82,6 +85,8 @@ export class ArticleFormComponent {
       return
     }
 
+    // Give article id, set newArticle to only have editable props
+
     const newArticle: Article = {
       title: content.title,
       date: new Date().toUTCString().slice(5, 16),
@@ -90,8 +95,8 @@ export class ArticleFormComponent {
       image: this.localArticleImage
     }
 
-    if (this.selectedArticle.index !== null) {
-      this.articleService.updateArticle(this.selectedArticle.index, {title: content.title, htmlContent: this.htmlContent, image: this.localArticleImage ?? null})
+    if (this.selectedArticle) {
+      // this.articleService.updateArticle(this.selectedArticle.index, {title: content.title, date: this.articleService.articles[this.selectedArticle.index].date, author: this.articleService.articles[this.selectedArticle.index].author, htmlContent: this.htmlContent, image: this.localArticleImage ?? null})
     } else {
       this.articleService.addArticle(newArticle)
     }

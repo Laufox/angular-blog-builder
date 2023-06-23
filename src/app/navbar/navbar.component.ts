@@ -1,4 +1,5 @@
 import { Component, Output, EventEmitter, Input } from '@angular/core';
+import { Article } from '../article';
 
 @Component({
   selector: 'app-navbar',
@@ -7,7 +8,8 @@ import { Component, Output, EventEmitter, Input } from '@angular/core';
 })
 export class NavbarComponent {
 
-  @Output() toggleArticleForm = new EventEmitter<{state: boolean, article?: {title: string, htmlContent: Event | undefined, index: number, image: string | ArrayBuffer | null}}>()
+  @Output() toggleArticleForm = new EventEmitter<{state: boolean, article?: Article}>()
+  // @Output() toggleArticleForm = new EventEmitter<{state: boolean, article?: {title: string, htmlContent: Event | undefined, index: number, image: string | ArrayBuffer | null}}>()
   @Output() toggleAboutModal = new EventEmitter<boolean>()
   @Output() toggleSettingsModal = new EventEmitter<boolean>()
   @Input() currentAuthorName = ''
