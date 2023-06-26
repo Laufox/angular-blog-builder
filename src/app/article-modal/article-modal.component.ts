@@ -10,7 +10,7 @@ import { Article } from '../article';
 export class ArticleModalComponent {
   @Output() toggleArticleModal = new EventEmitter<{state: boolean, article?: {title: string, index: number}}>()
   @Input() currentArticleIndex: number | null = null
-  article: Article = {title: '', author: '', date: '', htmlContent: undefined}
+  article: Article = {id: '', title: '', author: '', date: '', htmlContent: undefined}
 
   constructor(private articleService: ArticleService) {}
 

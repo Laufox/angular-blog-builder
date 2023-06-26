@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Article } from './article';
+import { ArticleFormContent } from './articleFormContent';
+import { v4 as uuid } from 'uuid'
 
 @Injectable({
   providedIn: 'root'
@@ -31,14 +33,32 @@ export class ArticleService {
   }
 
   // Push new article to array and update localstorage
-  addArticle(article: Article): void {
-    this.articles.push(article)
+  addArticle(articleContent: ArticleFormContent, author: string): void {
+    const newArticle: Article = {
+      id: uuid(),
+      author,
+      date: new Date().toUTCString().slice(5, 16),
+      ...articleContent
+    }
+    this.articles.push(newArticle)
     localStorage.setItem("articles",JSON.stringify(this.articles))
   }
 
-  updateArticle(index: number, updatedArticle: Article) {
-    this.articles[index] = updatedArticle
-    this.articles[index].lastUpdated = new Date().toUTCString().slice(5, 16)
+  updateArticle(id: string, articleContent: ArticleFormContent) {
+    let articleToUpdate = this.articles.find(art => art.id === id)
+    if (!articleToUpdate) {
+      return
+    }
+    articleToUpdate = {
+      ...articleToUpdate,
+      ...articleContent,
+      lastUpdated: new Date().toUTCString().slice(5, 16)
+    }
+    // articleToUpdate.title = updatedArticle.title
+    // articleToUpdate.htmlContent = updatedArticle.htmlContent
+    // articleToUpdate.image = updatedArticle.image
+    // articleToUpdate.lastUpdated = new Date().toUTCString().slice(5, 16)
+    // this.articles[index] = updatedArticle
     // this.articles[index].title = content.title
     // this.articles[index].htmlContent = content.htmlContent
     // if (content.image) {

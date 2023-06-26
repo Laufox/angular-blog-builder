@@ -2,6 +2,8 @@ import { Component, Output, EventEmitter, Input } from '@angular/core';
 import { Article } from '../article';
 import { ArticleService } from '../article-service.service';
 import { AngularEditorConfig } from '@kolkov/angular-editor/public-api';
+import { v4 as uuid } from 'uuid'
+import { ArticleFormContent } from '../articleFormContent';
 
 @Component({
   selector: 'app-article-form',
@@ -85,20 +87,16 @@ export class ArticleFormComponent {
       return
     }
 
-    // Give article id, set newArticle to only have editable props
-
-    const newArticle: Article = {
+    const articleContent: ArticleFormContent = {
       title: content.title,
-      date: new Date().toUTCString().slice(5, 16),
-      author: this.currentAuthorName,
       htmlContent: this.htmlContent,
       image: this.localArticleImage
     }
 
     if (this.selectedArticle) {
-      // this.articleService.updateArticle(this.selectedArticle.index, {title: content.title, date: this.articleService.articles[this.selectedArticle.index].date, author: this.articleService.articles[this.selectedArticle.index].author, htmlContent: this.htmlContent, image: this.localArticleImage ?? null})
+      this.articleService.updateArticle(this.selectedArticle.id, articleContent)
     } else {
-      this.articleService.addArticle(newArticle)
+      this.articleService.addArticle(articleContent, this.currentAuthorName)
     }
     this.closeForm()
   }
