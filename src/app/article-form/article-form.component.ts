@@ -56,9 +56,9 @@ export class ArticleFormComponent {
   constructor(private articleService: ArticleService) {}
 
   ngOnInit() {
-    // if (this.selectedArticle) {
-
-    // }
+    if (this.selectedArticle) {
+      this.localArticleImage = this.selectedArticle.image ?? null
+    }
     // if (this.selectedArticle.index !== null) {
     //   this.htmlContent = this.selectedArticle.htmlContent
     //   if (this.selectedArticle.image) {
