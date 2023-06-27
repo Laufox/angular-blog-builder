@@ -5,7 +5,7 @@
     (setActiveModal)="setActiveModal($event)"
     [currentAuthorName]="currentAuthorName"
 />
-<app-header [currentBlogTitle]="currentBlogTitle" [bannerImage]="bannerImage" />
+<app-header [siteTitle]="metaData.siteTitle" [bannerImage]="metaData.bannerImage" />
 <app-article-list (toggleArticleForm)="toggleArticleForm($event)" (toggleArticleModal)="toggleArticleModal($event)" (setActiveModal)="setActiveModal($event)" />
 <app-modal-outline *ngIf="activeModal" [activeModal]="activeModal" (setActiveModal)="setActiveModal($event)" />
 <app-article-form 
@@ -22,7 +22,7 @@
     (setCurrentBlogTitle)="setCurrentBlogTitle($event)" 
     (setCurrentAuthorName)="setCurrentAuthorName($event)" 
     (setBannerImage)="setBannerImage($event)"
-    [currentBlogTitle]="currentBlogTitle" 
-    [currentAuthorName]="currentAuthorName" 
+    [currentBlogTitle]="metaData.siteTitle" 
+    [currentAuthorName]="metaData.authorName" 
     [bannerImage]="bannerImage"
 />

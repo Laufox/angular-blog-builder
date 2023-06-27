@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Article } from './article';
 import { ModalOptions } from './modalOptions';
+import { SiteMetaDataService } from './site-meta-data.service';
+import { MetaData } from './metaData';
 
 @Component({
   selector: 'app-root',
@@ -19,8 +21,12 @@ export class AppComponent {
   // selectedArticle: {title: string, htmlContent: Event | undefined, index: number | null, image: string | ArrayBuffer | null} = {title: '', htmlContent: undefined, index: null, image: null}
   currentArticleIndex: number | null = null
   activeModal: ModalOptions = ''
+  metaData: MetaData = {siteTitle: '', authorName: '', bannerImage: null}
+
+  constructor(private siteMetaDataService: SiteMetaDataService) {}
 
   ngOnInit() {
+    this.metaData = this.siteMetaDataService.getMetaData()
     this.currentBlogTitle = localStorage.getItem("blogTitle") ?? "My blog title"
     this.currentAuthorName = localStorage.getItem("authorName") ?? "John Doe"
     const storageBanner = localStorage.getItem('bannerImage')
