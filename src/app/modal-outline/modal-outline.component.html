@@ -1,0 +1,17 @@
+<div 
+    class="modal-wrapper"
+    (click)="closeModal()"
+>
+    <div class="modal-container" (click)="$event.stopPropagation()">
+        <div
+            class="close-button"
+            (click)="closeModal()"
+        >
+            X
+        </div>
+        <p *ngIf="activeModal==='settings'">Settings</p>
+        <p *ngIf="activeModal==='article'">article</p>
+        <p *ngIf="activeModal==='articleForm'">articleForm</p>
+        <p *ngIf="activeModal==='about'">about</p>
+    </div>
+</div>

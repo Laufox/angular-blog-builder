@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Article } from './article';
+import { ModalOptions } from './modalOptions';
 
 @Component({
   selector: 'app-root',
@@ -17,6 +18,7 @@ export class AppComponent {
   selectedArticle: Article | null = null
   // selectedArticle: {title: string, htmlContent: Event | undefined, index: number | null, image: string | ArrayBuffer | null} = {title: '', htmlContent: undefined, index: null, image: null}
   currentArticleIndex: number | null = null
+  activeModal: ModalOptions = ''
 
   ngOnInit() {
     this.currentBlogTitle = localStorage.getItem("blogTitle") ?? "My blog title"
@@ -25,6 +27,10 @@ export class AppComponent {
     if (storageBanner) {
       this.bannerImage = JSON.parse(storageBanner)
     }
+  }
+
+  setActiveModal(state: ModalOptions) {
+    this.activeModal = state
   }
 
   toggleArticleForm(arg: {state: boolean, article?: Article}) {
@@ -55,11 +61,33 @@ export class AppComponent {
 
   toggleSettingsModal(state: boolean) {
     this.settingsModalOpen = state
+    if (state) {
+      // document.getElementsByTagName('body')[0].classList.add('modal-open')
+      document.body.style.position = 'fixed'
+      document.body.style.top = `-${window.scrollY}px`
+    } else {
+      // document.getElementsByTagName('body')[0].classList.remove('modal-open')
+      document.body.style.position = ''
+      document.body.style.top = ''
+    }
   }
 
   toggleArticleModal(arg: {state: boolean, index?: number}) {
     this.articleModalOpen = arg.state
     this.currentArticleIndex = (arg.index || arg.index === 0) ? arg.index : null
+    if (arg.state) {
+      console.log(window.scrollY)
+      const windowScrollY = window.scrollY
+      // document.getElementsByTagName('body')[0].classList.add('modal-open')
+      document.body.style.position = 'fixed'
+      document.body.style.top = `-${windowScrollY}px`
+    } else {
+      // document.getElementsByTagName('body')[0].classList.remove('modal-open')
+      const scrollY = document.body.style.top;
+      document.body.style.position = '';
+      document.body.style.top = '';
+      window.scrollTo(0, parseInt(scrollY || '0') * -1);
+    }
   }
 
   setCurrentBlogTitle(title: string) {

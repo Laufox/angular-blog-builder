@@ -10,7 +10,8 @@ import { SettingsModalComponent } from './settings-modal/settings-modal.componen
 import { AboutModalComponent } from './about-modal/about-modal.component';
 import { ArticleModalComponent } from './article-modal/article-modal.component';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
+import { ModalOutlineComponent } from './modal-outline/modal-outline.component'
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { HttpClientModule } from '@angular/common/http'
     ArticleFormComponent,
     SettingsModalComponent,
     AboutModalComponent,
-    ArticleModalComponent
+    ArticleModalComponent,
+    ModalOutlineComponent
   ],
   imports: [
     BrowserModule, AngularEditorModule, FormsModule, HttpClientModule

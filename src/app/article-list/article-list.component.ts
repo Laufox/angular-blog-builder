@@ -1,6 +1,7 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { Article } from '../article';
 import { ArticleService } from '../article-service.service';
+import { ModalOptions } from '../modalOptions';
 
 @Component({
   selector: 'app-article-list',
@@ -11,6 +12,7 @@ export class ArticleListComponent {
   
   @Output() toggleArticleForm = new EventEmitter<{state: boolean, article?: Article}>()
   @Output() toggleArticleModal = new EventEmitter<{state: boolean, index: number}>()
+  @Output() setActiveModal = new EventEmitter<ModalOptions>()
   articles: Article[] = []
   articleFormOpen: boolean = false
 
@@ -31,7 +33,8 @@ export class ArticleListComponent {
   }
 
   updateArticle(index: number): void {
-    this.toggleArticleForm.emit({state: true, article: this.articleService.articles[index]})
+    // this.toggleArticleForm.emit({state: true, article: this.articleService.articles[index]})
+    this.setActiveModal.emit('articleForm')
   }
 
   removeArticle(index: number): void {
@@ -40,11 +43,13 @@ export class ArticleListComponent {
 
   // Open modal for adding new article
   openForm(): void {
-    this.toggleArticleForm.emit({state: true})
+    // this.toggleArticleForm.emit({state: true})
+    this.setActiveModal.emit('articleForm')
   }
 
   openArticle(index: number): void {
-    this.toggleArticleModal.emit({state: true, index})
+    // this.toggleArticleModal.emit({state: true, index})
+    this.setActiveModal.emit('article')
   }
 
 }
