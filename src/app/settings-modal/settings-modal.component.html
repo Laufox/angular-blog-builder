@@ -1,40 +1,26 @@
-<div 
-    class="modal-wrapper"
-    (click)="closeModal()"
->
-    <div class="modal-container" (click)="$event.stopPropagation()">
-        <div
-            class="close-button"
-            (click)="closeModal()"
-        >
-            X
-        </div>
+<h2>Website setting</h2>
 
-        <h2>Website setting</h2>
-
-        <div class="form-fields-container">
-            <div class="form-field-wrapper">
-                <label for="blog-title">* Blog title:</label>
-                <input type="text" #blogTitle id="blog-title" value="{{currentBlogTitle}}" />
-                <p *ngIf="formErrors.blogTitle" class="input-error">This field is required</p>
-            </div>
-            <div class="form-field-wrapper">
-                <label for="author-name">* Author name:</label>
-                <input type="text" #authorName id="author-name" value="{{currentAuthorName}}" />
-                <p *ngIf="formErrors.authorName" class="input-error">This field is required</p>
-            </div>
-            <div class="form-field-wrapper">
-                <label for="banner">* Banner:</label>
-                <input type="file" id="banner" (change)="onImageChange($event)" />
-                <img *ngIf="localBannerImage" src="{{localBannerImage}}" alt="test-image" />
-            </div>
-        </div>
-        
-        <button
-            class="save-button"
-            (click)="
-                updateSettings({blogTitle: blogTitle.value, authorName: authorName.value})
-            "
-        >Save</button>
+<div class="form-fields-container">
+    <div class="form-field-wrapper">
+        <label for="blog-title">* Blog title:</label>
+        <input type="text" #siteTitle id="blog-title" value="{{metaData.siteTitle}}" />
+        <p *ngIf="formErrors.siteTitle" class="input-error">This field is required</p>
+    </div>
+    <div class="form-field-wrapper">
+        <label for="author-name">* Author name:</label>
+        <input type="text" #authorName id="author-name" value="{{metaData.authorName}}" />
+        <p *ngIf="formErrors.authorName" class="input-error">This field is required</p>
+    </div>
+    <div class="form-field-wrapper">
+        <label for="banner">* Banner:</label>
+        <input type="file" id="banner" (change)="onImageChange($event)" />
+        <img *ngIf="localBannerImage" src="{{localBannerImage}}" alt="test-image" />
     </div>
 </div>
+
+<button
+    class="save-button"
+    (click)="
+        updateSettings({siteTitle: siteTitle.value, authorName: authorName.value})
+    "
+>Save</button>

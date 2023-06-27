@@ -38,7 +38,7 @@ export class SiteMetaDataService {
     localStorage.setItem("authorName", name)
   }
 
-  setBannerImage(image: ArrayBuffer) {
+  setBannerImage(image: ArrayBuffer | string) {
     this.metaData.bannerImage = image
     localStorage.setItem('bannerImage', JSON.stringify(image))
   }
