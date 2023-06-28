@@ -4,6 +4,8 @@ import { ArticleService } from '../article-service.service';
 import { AngularEditorConfig } from '@kolkov/angular-editor/public-api';
 import { v4 as uuid } from 'uuid'
 import { ArticleFormContent } from '../articleFormContent';
+import { SiteMetaDataService } from '../site-meta-data.service';
+import { MetaData } from '../metaData';
 
 @Component({
   selector: 'app-article-form',
@@ -12,12 +14,15 @@ import { ArticleFormContent } from '../articleFormContent';
 })
 export class ArticleFormComponent {
 
-  @Output() toggleArticleForm = new EventEmitter<{state: boolean, article?: Article}>()
-  @Input() currentAuthorName = ''
-  @Input() selectedArticle: Article | null = null
+  @Output() closeModal = new EventEmitter()
+  // @Output() toggleArticleForm = new EventEmitter<{state: boolean, article?: Article}>()
+  // @Input() currentAuthorName = ''
+  // @Input() selectedArticle: Article | null = null
 
   activeArticle: Article | null = null
   //{title: '', id: '', author: '', date: '', image: null, htmlContent: undefined}
+
+  metaData: MetaData = {siteTitle: '', authorName: '', bannerImage: null}
 
   formErrors = {
     title: false
@@ -56,7 +61,7 @@ export class ArticleFormComponent {
     ]
   }
 
-  constructor(private articleService: ArticleService) {}
+  constructor(private articleService: ArticleService, private siteMetaDataService: SiteMetaDataService) {}
 
   ngOnInit() {
     this.activeArticle = this.articleService.getActiveArticle()
@@ -64,6 +69,8 @@ export class ArticleFormComponent {
       this.htmlContent = this.activeArticle.htmlContent
       this.localArticleImage = this.activeArticle.image ?? null
     }
+    this.siteMetaDataService.metaDataSubject.subscribe(metaData => this.metaData = metaData)
+    this.siteMetaDataService.getMetaData()
     // console.log("first", this.activeArticle)
     // this.articleService.activeArticleSubject.subscribe(article => this.activeArticle = article)
     // if (this.selectedArticle) {
@@ -87,10 +94,6 @@ export class ArticleFormComponent {
     }
   }
 
-  closeForm() {
-    this.toggleArticleForm.emit({state: false})
-  }
-
   addArticle(content: {title: string}): void {
     this.formErrors.title = !content.title
     if (this.formErrors.title) {
@@ -106,9 +109,9 @@ export class ArticleFormComponent {
     if (this.activeArticle) {
       this.articleService.updateArticle(this.activeArticle.id, articleContent)
     } else {
-      this.articleService.addArticle(articleContent, this.currentAuthorName)
+      this.articleService.addArticle(articleContent, this.metaData.authorName)
     }
-    this.closeForm()
+    this.closeModal.emit()
   }
 
 }

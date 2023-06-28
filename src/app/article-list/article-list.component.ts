@@ -48,7 +48,8 @@ export class ArticleListComponent {
     this.setActiveModal.emit('articleForm')
   }
 
-  openArticle(index: number): void {
+  openArticle(id: string): void {
+    this.articleService.setSelectedArticle(id)
     // this.toggleArticleModal.emit({state: true, index})
     this.setActiveModal.emit('article')
   }

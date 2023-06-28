@@ -8,19 +8,12 @@ import { Article } from '../article';
   styleUrls: ['./article-modal.component.scss']
 })
 export class ArticleModalComponent {
-  @Output() toggleArticleModal = new EventEmitter<{state: boolean, article?: {title: string, index: number}}>()
-  @Input() currentArticleIndex: number | null = null
-  article: Article = {id: '', title: '', author: '', date: '', htmlContent: undefined}
+  activeArticle: Article | null = null
 
   constructor(private articleService: ArticleService) {}
 
   ngOnInit() {
-    if(this.currentArticleIndex !== null) {
-      this.article = this.articleService.articles[this.currentArticleIndex]
-    }
+    this.activeArticle = this.articleService.getActiveArticle()
   }
 
-  closeModal() {
-    this.toggleArticleModal.emit({state: false})
-  }
 }

@@ -6,13 +6,13 @@
 <app-header [siteTitle]="metaData.siteTitle" [bannerImage]="metaData.bannerImage" />
 <app-article-list (toggleArticleForm)="toggleArticleForm($event)" (toggleArticleModal)="toggleArticleModal($event)" (setActiveModal)="setActiveModal($event)" />
 <app-modal-outline *ngIf="activeModal" [activeModal]="activeModal" (setActiveModal)="setActiveModal($event)" />
-<app-article-form 
+<!-- <app-article-form 
     *ngIf="articleOpen" 
     (toggleArticleForm)="toggleArticleForm($event)" 
     [currentAuthorName]="currentAuthorName"
     [selectedArticle]="selectedArticle"
-/>
-<app-article-modal *ngIf="articleModalOpen" (toggleArticleModal)="toggleArticleModal($event)" [currentArticleIndex]="currentArticleIndex" />
+/> -->
+<!-- <app-article-modal *ngIf="articleModalOpen" (toggleArticleModal)="toggleArticleModal($event)" [currentArticleIndex]="currentArticleIndex" /> -->
 <!-- <app-about-modal *ngIf="aboutModalOpen" (toggleAboutModal)="toggleAboutModal($event)" /> -->
 <!-- <app-settings-modal 
     *ngIf="settingsModalOpen" 

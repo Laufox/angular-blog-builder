@@ -1,19 +1,5 @@
-<div 
-    class="modal-wrapper"
-    (click)="closeModal()"
->
-    <div class="modal-container" (click)="$event.stopPropagation()">
-        <div
-            class="close-button"
-            (click)="closeModal()"
-        >
-            X
-        </div>
+<h2>{{activeArticle?.title}}</h2>
+<span>{{activeArticle?.author}}</span>
+<span>{{activeArticle?.date}}</span>
 
-        <h2>{{article.title}}</h2>
-        <span>{{article.author}}</span>
-        <span>{{article.date}}</span>
-
-        <div [innerHTML]="article.htmlContent"></div>
-    </div>
-</div>
+<div [innerHTML]="activeArticle?.htmlContent"></div>
