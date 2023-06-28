@@ -68,21 +68,15 @@ export class ArticleService {
     if (!articleToUpdate) {
       return
     }
+    console.log(articleToUpdate)
+    console.log(articleContent)
     articleToUpdate = {
       ...articleToUpdate,
       ...articleContent,
       lastUpdated: new Date().toUTCString().slice(5, 16)
     }
-    // articleToUpdate.title = updatedArticle.title
-    // articleToUpdate.htmlContent = updatedArticle.htmlContent
-    // articleToUpdate.image = updatedArticle.image
-    // articleToUpdate.lastUpdated = new Date().toUTCString().slice(5, 16)
-    // this.articles[index] = updatedArticle
-    // this.articles[index].title = content.title
-    // this.articles[index].htmlContent = content.htmlContent
-    // if (content.image) {
-    //   this.articles[index].image = content.image
-    // }
+    console.log(articleToUpdate)
+    this.articles[this.articles.findIndex(art => art.id === id)] = articleToUpdate
     localStorage.setItem("articles",JSON.stringify(this.articles))
   }
 
