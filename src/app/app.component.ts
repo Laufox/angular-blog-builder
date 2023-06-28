@@ -26,7 +26,8 @@ export class AppComponent {
   constructor(private siteMetaDataService: SiteMetaDataService) {}
 
   ngOnInit() {
-    this.metaData = this.siteMetaDataService.getMetaData()
+    this.siteMetaDataService.metaDataSubject.subscribe(metaData => this.metaData = metaData)
+    this.siteMetaDataService.getMetaData()
     this.currentBlogTitle = localStorage.getItem("blogTitle") ?? "My blog title"
     this.currentAuthorName = localStorage.getItem("authorName") ?? "John Doe"
     const storageBanner = localStorage.getItem('bannerImage')

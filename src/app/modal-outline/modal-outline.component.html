@@ -11,7 +11,7 @@
         </div>
         <app-settings-modal 
             *ngIf="activeModal==='settings'" 
-            
+            (closeModal)="closeModal()"
         />
         <!-- <p *ngIf="activeModal==='settings'">Settings</p> -->
         <!-- <p *ngIf="activeModal==='article'">article</p>

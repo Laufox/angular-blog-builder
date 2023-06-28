@@ -13,9 +13,9 @@ export class SettingsModalComponent {
   // @Output() setSiteTitle = new EventEmitter<string>()
   // @Output() setAuthorName = new EventEmitter<string>()
   // @Output() setBannerImage = new EventEmitter()
+  @Output() closeModal = new EventEmitter()
   siteTitle = ''
   authorName = ''
-  test = "abc123"
   // bannerImage: string | ArrayBuffer | null = null
 
   constructor (private metaDataService: SiteMetaDataService) {}
@@ -42,7 +42,8 @@ export class SettingsModalComponent {
   }
 
   ngOnInit() {
-    this.metaData = this.metaDataService.getMetaData()
+    this.metaDataService.metaDataSubject.subscribe(metaData => this.metaData = metaData)
+    this.metaDataService.getMetaData()
     // console.log("first", this.metaDataService.getMetaData().siteTitle)
     // const temp = this.metaDataService.metaData.siteTitle
     // console.log("temp", temp)
@@ -55,10 +56,6 @@ export class SettingsModalComponent {
     //   this.localBannerImage = this.bannerImage
     // }
   }
-
-  // closeModal() {
-  //   this.toggleSettingsModal.emit(false)
-  // }
 
   updateSettings(settings: {siteTitle: string, authorName: string}) {
     this.formErrors.siteTitle = !settings.siteTitle
@@ -82,7 +79,6 @@ export class SettingsModalComponent {
       this.metaDataService.setBannerImage(this.localBannerImage)
       // this.setBannerImage.emit(this.localBannerImage)
     }
-
-    // this.closeModal()
+    this.closeModal.emit()
   }
 }

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { MetaData } from './metaData';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -7,6 +8,7 @@ import { MetaData } from './metaData';
 export class SiteMetaDataService {
 
   metaData: MetaData = {siteTitle: '', authorName: '', bannerImage: null}
+  metaDataSubject: Subject<MetaData> = new Subject<MetaData>
   constructor() {
     this.metaData = this.getInitialMetaData()
   }
@@ -21,6 +23,7 @@ export class SiteMetaDataService {
   }
 
   getMetaData(): MetaData {
+    this.metaDataSubject.next(this.metaData)
     return {
       siteTitle: this.metaData.siteTitle,
       authorName: this.metaData.authorName,
@@ -31,15 +34,18 @@ export class SiteMetaDataService {
   setSiteTitle(title: string) {
     this.metaData.siteTitle = title
     localStorage.setItem("siteTitle", title)
+    this.metaDataSubject.next(this.metaData)
   }
 
   setAuthorName(name: string) {
     this.metaData.authorName = name
     localStorage.setItem("authorName", name)
+    this.metaDataSubject.next(this.metaData)
   }
 
   setBannerImage(image: ArrayBuffer | string) {
     this.metaData.bannerImage = image
     localStorage.setItem('bannerImage', JSON.stringify(image))
+    this.metaDataSubject.next(this.metaData)
   }
 }
