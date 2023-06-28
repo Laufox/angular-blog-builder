@@ -16,6 +16,9 @@ export class ArticleFormComponent {
   @Input() currentAuthorName = ''
   @Input() selectedArticle: Article | null = null
 
+  activeArticle: Article | null = null
+  //{title: '', id: '', author: '', date: '', image: null, htmlContent: undefined}
+
   formErrors = {
     title: false
   }
@@ -56,9 +59,16 @@ export class ArticleFormComponent {
   constructor(private articleService: ArticleService) {}
 
   ngOnInit() {
-    if (this.selectedArticle) {
-      this.localArticleImage = this.selectedArticle.image ?? null
+    this.activeArticle = this.articleService.getActiveArticle()
+    if (this.activeArticle) {
+      this.htmlContent = this.activeArticle.htmlContent
+      this.localArticleImage = this.activeArticle.image ?? null
     }
+    // console.log("first", this.activeArticle)
+    // this.articleService.activeArticleSubject.subscribe(article => this.activeArticle = article)
+    // if (this.selectedArticle) {
+    //   this.localArticleImage = this.selectedArticle.image ?? null
+    // }
     // if (this.selectedArticle.index !== null) {
     //   this.htmlContent = this.selectedArticle.htmlContent
     //   if (this.selectedArticle.image) {
@@ -93,8 +103,8 @@ export class ArticleFormComponent {
       image: this.localArticleImage
     }
 
-    if (this.selectedArticle) {
-      this.articleService.updateArticle(this.selectedArticle.id, articleContent)
+    if (this.activeArticle) {
+      this.articleService.updateArticle(this.activeArticle.id, articleContent)
     } else {
       this.articleService.addArticle(articleContent, this.currentAuthorName)
     }

@@ -9,6 +9,8 @@ import { v4 as uuid } from 'uuid'
 export class ArticleService {
 
   articles: Article[] = []
+  activeArticle: Article | null = null
+  // activeArticleSubject: Subject<Article> = new Subject<Article>
   constructor() { 
     this.articles = this.getInitialArticles()
   }
@@ -24,6 +26,23 @@ export class ArticleService {
     
     // Turn storage value into a proper array and return it
     return JSON.parse(storageArticles)
+  }
+
+  setSelectedArticle(id: string) {
+    const article = this.articles.find(art => art.id === id)
+    this.activeArticle = article ?? null
+    // if (!article) {
+    //   return
+    // }
+    // this.activeArticleSubject.next(article)
+  }
+
+  resetActiveArticle() {
+    this.activeArticle = null
+  }
+
+  getActiveArticle() {
+    return this.activeArticle
   }
 
   getArticles(): Article[] {

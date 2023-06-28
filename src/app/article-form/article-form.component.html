@@ -1,38 +1,24 @@
-<div 
-    class="article-form-wrapper"
-    (click)="closeForm()"
->
-    <div class="article-form-container" (click)="$event.stopPropagation()">
-        <div
-            class="close-button"
-            (click)="closeForm()"
-        >
-            X
-        </div>
+<h2>New article</h2>
 
-        <h2>New article</h2>
-        
-        <div class="form-fields-container">
-            <div class="form-field-wrapper">
-                <label for="title-input">* Title:</label>
-                <input type="text" #title id="title-input" value="{{selectedArticle?.title ?? ''}}"  />
-                <p *ngIf="formErrors.title" class="input-error">This field is required</p>
-            </div>
-        </div>
-
-        <div class="form-field-wrapper">
-            <label for="banner">* image:</label>
-            <input type="file" id="banner" (change)="onImageChange($event)" />
-            <img *ngIf="localArticleImage" src="{{localArticleImage}}" alt="test-image" />
-        </div>
-
-        <angular-editor [(ngModel)]="htmlContent" [config]="config"></angular-editor>
-        
-        <button
-            class="add-article-button"
-            (click)="addArticle({
-                title: title.value
-            })"
-        >Add</button>
+<div class="form-fields-container">
+    <div class="form-field-wrapper">
+        <label for="title-input">* Title:</label>
+        <input type="text" #title id="title-input" value="{{activeArticle?.title ?? ''}}"  />
+        <p *ngIf="formErrors.title" class="input-error">This field is required</p>
     </div>
 </div>
+
+<div class="form-field-wrapper">
+    <label for="banner">* image:</label>
+    <input type="file" id="banner" (change)="onImageChange($event)" />
+    <img *ngIf="localArticleImage" src="{{localArticleImage}}" alt="test-image" />
+</div>
+
+<angular-editor [(ngModel)]="htmlContent" [config]="config"></angular-editor>
+
+<button
+    class="add-article-button"
+    (click)="addArticle({
+        title: title.value
+    })"
+>Add</button>

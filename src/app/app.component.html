@@ -1,9 +1,7 @@
 <app-navbar 
-    (toggleArticleForm)="toggleArticleForm($event)" 
-    (toggleAboutModal)="toggleAboutModal($event)" 
-    (toggleSettingsModal)="toggleSettingsModal($event)" 
+    (toggleArticleForm)="toggleArticleForm($event)"
     (setActiveModal)="setActiveModal($event)"
-    [currentAuthorName]="currentAuthorName"
+    [currentAuthorName]="metaData.authorName"
 />
 <app-header [siteTitle]="metaData.siteTitle" [bannerImage]="metaData.bannerImage" />
 <app-article-list (toggleArticleForm)="toggleArticleForm($event)" (toggleArticleModal)="toggleArticleModal($event)" (setActiveModal)="setActiveModal($event)" />
@@ -15,7 +13,7 @@
     [selectedArticle]="selectedArticle"
 />
 <app-article-modal *ngIf="articleModalOpen" (toggleArticleModal)="toggleArticleModal($event)" [currentArticleIndex]="currentArticleIndex" />
-<app-about-modal *ngIf="aboutModalOpen" (toggleAboutModal)="toggleAboutModal($event)" />
+<!-- <app-about-modal *ngIf="aboutModalOpen" (toggleAboutModal)="toggleAboutModal($event)" /> -->
 <!-- <app-settings-modal 
     *ngIf="settingsModalOpen" 
     (toggleSettingsModal)="toggleSettingsModal($event)" 

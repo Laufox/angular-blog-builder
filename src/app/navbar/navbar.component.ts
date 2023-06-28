@@ -11,8 +11,8 @@ export class NavbarComponent {
 
   @Output() toggleArticleForm = new EventEmitter<{state: boolean, article?: Article}>()
   // @Output() toggleArticleForm = new EventEmitter<{state: boolean, article?: {title: string, htmlContent: Event | undefined, index: number, image: string | ArrayBuffer | null}}>()
-  @Output() toggleAboutModal = new EventEmitter<boolean>()
-  @Output() toggleSettingsModal = new EventEmitter<boolean>()
+  // @Output() toggleAboutModal = new EventEmitter<boolean>()
+  // @Output() toggleSettingsModal = new EventEmitter<boolean>()
   @Output() setActiveModal = new EventEmitter<ModalOptions>()
   @Input() currentAuthorName = ''
 

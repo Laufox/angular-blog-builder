@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-about-modal',
@@ -6,9 +6,5 @@ import { Component, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./about-modal.component.scss']
 })
 export class AboutModalComponent {
-  @Output() toggleAboutModal = new EventEmitter<boolean>()
 
-  closeModal() {
-    this.toggleAboutModal.emit(false)
-  }
 }

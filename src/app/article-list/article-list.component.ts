@@ -32,9 +32,10 @@ export class ArticleListComponent {
     return elm.clientHeight > 300
   }
 
-  updateArticle(index: number): void {
-    // this.toggleArticleForm.emit({state: true, article: this.articleService.articles[index]})
+  updateArticle(id: string): void {
+    this.articleService.setSelectedArticle(id)
     this.setActiveModal.emit('articleForm')
+    // this.toggleArticleForm.emit({state: true, article: this.articleService.articles[index]})
   }
 
   removeArticle(index: number): void {

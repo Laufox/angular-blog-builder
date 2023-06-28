@@ -13,6 +13,12 @@
             *ngIf="activeModal==='settings'" 
             (closeModal)="closeModal()"
         />
+        <app-about-modal 
+            *ngIf="activeModal==='about'"
+        />
+        <app-article-form
+            *ngIf="activeModal==='articleForm'"
+        />
         <!-- <p *ngIf="activeModal==='settings'">Settings</p> -->
         <!-- <p *ngIf="activeModal==='article'">article</p>
         <p *ngIf="activeModal==='articleForm'">articleForm</p>
