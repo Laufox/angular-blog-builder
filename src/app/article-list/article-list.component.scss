@@ -1,5 +1,7 @@
 .article-list-wrapper {
 
+    padding-bottom: 30px;
+
     .article-list-container {
         height: 100%;
         max-width: 1400px;
@@ -17,6 +19,7 @@
             border-radius: 2px;
             cursor: pointer;
             width: fit-content;
+            margin-bottom: 30px;
 
             &:hover {
                 border-color: #2E2E2E;
@@ -29,17 +32,22 @@
             margin-top: 10px;
 
             .article-wrapper {
-                border-bottom: 1px solid black;
+                border-top-left-radius: 5px;
+                border-bottom-left-radius: 5px;
+                border-left: 5px solid #3335;
+                padding-left: 10px;
                 display: flex;
                 gap: 2%;
-                margin-bottom: 15px;
-                // height: max-content;
+                margin-bottom: 45px;
+                height: 350px;
                 // background-color: #2E2E2E;
 
                 .article-content {
                     width: 49%;
+                    display: flex;
+                    flex-flow: column;
+                    position: relative;
                     
-
                     .article-heading-actions {
                         display: flex;
                         justify-content: space-between;
@@ -89,6 +97,7 @@
                     }
 
                     .article-body {
+                        flex-grow: 1;
                         margin: 10px 0;
                         font-size: 14pt;
                         width: 100%;
@@ -114,20 +123,28 @@
                     }
 
                     .read-more-btn {
-                        background-color: #667FBD;
+                        background-color: #228a34;
                         border-radius: 5px;
                         color: white;
-                        padding: 5px 10px;
+                        padding: 8px 13px;
                         width: fit-content;
-                        margin-bottom: 10px;
                         cursor: pointer;
                         font-weight: 500;
+                        font-size: 14pt;
+                        position: absolute;
+                        bottom: 30px;
+                        left: 40%;
 
                         &:hover {
                             text-decoration: underline;
+                            outline: 1px solid black;
                         }
                     }
 
+                }
+
+                img {
+                    width: 49%;
                 }
 
                 .article-image {
@@ -135,10 +152,6 @@
                     background-image: url('../../assets/image-placeholder.png');
                     background-size: 100% 100%;
                     background-repeat: no-repeat;
-                }
-    
-                &:last-child {
-                    border: none;
                 }
             }
 

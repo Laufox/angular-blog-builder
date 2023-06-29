@@ -38,7 +38,7 @@
                     <span class="article-meta">{{article.date}} | {{article.author | uppercase}}</span>
                     <div class="article-body">
                         <div [innerHTML]="article.htmlContent" class="article-body-content-{{i}}"></div>
-                        <div *ngIf="checkContentHeight(i)" class="article-body-fadeout"></div>
+                        <div class="article-body-fadeout"></div>
                     </div>
                     <div
                         class="read-more-btn"
@@ -46,7 +46,7 @@
                         role="button"
                         (click)="openArticle(article.id)"
                     >
-                        Read more
+                        Read full article
                     </div>
                 </div>
                 <img *ngIf="article.image" src="{{article.image}}" />
