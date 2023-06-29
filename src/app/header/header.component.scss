@@ -1,14 +1,29 @@
 .header-wrapper {
 
-    margin: 20px 0;
+    margin-bottom: 40px;
 
     .header-container {
-        height: 100%;
-        max-width: 1400px;
-        margin: auto;
+        height: 250px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .shade {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(200,200,200,0.4);
+        }
 
         h1 {
             font-size: 40pt;
+            position: relative;
+            z-index: 10;
         }
     }
 }

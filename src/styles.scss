@@ -12,12 +12,6 @@ body {
     height: 100vh;
 }
 
-body.modal-open {
-    overflow: hidden;
-    position: fixed;
-    width: 100%;
-}
-
 body::-webkit-scrollbar{
     display: none;
 }
