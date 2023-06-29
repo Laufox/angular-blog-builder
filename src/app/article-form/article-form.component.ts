@@ -2,7 +2,6 @@ import { Component, Output, EventEmitter, Input } from '@angular/core';
 import { Article } from '../article';
 import { ArticleService } from '../article-service.service';
 import { AngularEditorConfig } from '@kolkov/angular-editor/public-api';
-import { v4 as uuid } from 'uuid'
 import { ArticleFormContent } from '../articleFormContent';
 import { SiteMetaDataService } from '../site-meta-data.service';
 import { MetaData } from '../metaData';
@@ -15,13 +14,8 @@ import { MetaData } from '../metaData';
 export class ArticleFormComponent {
 
   @Output() closeModal = new EventEmitter()
-  // @Output() toggleArticleForm = new EventEmitter<{state: boolean, article?: Article}>()
-  // @Input() currentAuthorName = ''
-  // @Input() selectedArticle: Article | null = null
 
   activeArticle: Article | null = null
-  //{title: '', id: '', author: '', date: '', image: null, htmlContent: undefined}
-
   metaData: MetaData = {siteTitle: '', authorName: '', bannerImage: null}
 
   formErrors = {
@@ -29,7 +23,6 @@ export class ArticleFormComponent {
   }
 
   htmlContent?: Event
-
   localArticleImage: string | ArrayBuffer | null = null
 
   config: AngularEditorConfig = {
@@ -71,17 +64,6 @@ export class ArticleFormComponent {
     }
     this.siteMetaDataService.metaDataSubject.subscribe(metaData => this.metaData = metaData)
     this.siteMetaDataService.getMetaData()
-    // console.log("first", this.activeArticle)
-    // this.articleService.activeArticleSubject.subscribe(article => this.activeArticle = article)
-    // if (this.selectedArticle) {
-    //   this.localArticleImage = this.selectedArticle.image ?? null
-    // }
-    // if (this.selectedArticle.index !== null) {
-    //   this.htmlContent = this.selectedArticle.htmlContent
-    //   if (this.selectedArticle.image) {
-    //     this.localArticleImage = this.selectedArticle.image
-    //   }
-    // }
   }
 
   onImageChange(e: any) {

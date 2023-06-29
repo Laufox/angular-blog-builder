@@ -10,7 +10,6 @@ export class ArticleService {
 
   articles: Article[] = []
   activeArticle: Article | null = null
-  // activeArticleSubject: Subject<Article> = new Subject<Article>
   constructor() { 
     this.articles = this.getInitialArticles()
   }
@@ -31,10 +30,6 @@ export class ArticleService {
   setSelectedArticle(id: string) {
     const article = this.articles.find(art => art.id === id)
     this.activeArticle = article ?? null
-    // if (!article) {
-    //   return
-    // }
-    // this.activeArticleSubject.next(article)
   }
 
   resetActiveArticle() {
@@ -46,9 +41,7 @@ export class ArticleService {
   }
 
   getArticles(): Article[] {
-
     return this.articles
-    
   }
 
   // Push new article to array and update localstorage
@@ -68,14 +61,11 @@ export class ArticleService {
     if (!articleToUpdate) {
       return
     }
-    console.log(articleToUpdate)
-    console.log(articleContent)
     articleToUpdate = {
       ...articleToUpdate,
       ...articleContent,
       lastUpdated: new Date().toUTCString().slice(5, 16)
     }
-    console.log(articleToUpdate)
     this.articles[this.articles.findIndex(art => art.id === id)] = articleToUpdate
     localStorage.setItem("articles",JSON.stringify(this.articles))
   }

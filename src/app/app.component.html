@@ -1,26 +1,16 @@
 <app-navbar 
-    (toggleArticleForm)="toggleArticleForm($event)"
     (setActiveModal)="setActiveModal($event)"
     [currentAuthorName]="metaData.authorName"
 />
-<app-header [siteTitle]="metaData.siteTitle" [bannerImage]="metaData.bannerImage" />
-<app-article-list (toggleArticleForm)="toggleArticleForm($event)" (toggleArticleModal)="toggleArticleModal($event)" (setActiveModal)="setActiveModal($event)" />
-<app-modal-outline *ngIf="activeModal" [activeModal]="activeModal" (setActiveModal)="setActiveModal($event)" />
-<!-- <app-article-form 
-    *ngIf="articleOpen" 
-    (toggleArticleForm)="toggleArticleForm($event)" 
-    [currentAuthorName]="currentAuthorName"
-    [selectedArticle]="selectedArticle"
-/> -->
-<!-- <app-article-modal *ngIf="articleModalOpen" (toggleArticleModal)="toggleArticleModal($event)" [currentArticleIndex]="currentArticleIndex" /> -->
-<!-- <app-about-modal *ngIf="aboutModalOpen" (toggleAboutModal)="toggleAboutModal($event)" /> -->
-<!-- <app-settings-modal 
-    *ngIf="settingsModalOpen" 
-    (toggleSettingsModal)="toggleSettingsModal($event)" 
-    (setCurrentBlogTitle)="setCurrentBlogTitle($event)" 
-    (setCurrentAuthorName)="setCurrentAuthorName($event)" 
-    (setBannerImage)="setBannerImage($event)"
-    [currentBlogTitle]="metaData.siteTitle" 
-    [currentAuthorName]="metaData.authorName" 
-    [bannerImage]="bannerImage"
-/> -->
+<app-header 
+    [siteTitle]="metaData.siteTitle" 
+    [bannerImage]="metaData.bannerImage" 
+/>
+<app-article-list 
+    (setActiveModal)="setActiveModal($event)" 
+/>
+<app-modal-outline 
+    *ngIf="activeModal" 
+    [activeModal]="activeModal" 
+    (setActiveModal)="setActiveModal($event)" 
+/>
