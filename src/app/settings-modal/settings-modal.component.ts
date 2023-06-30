@@ -25,22 +25,43 @@ export class SettingsModalComponent {
 
   localBannerImage: string | ArrayBuffer | null = null
 
+  deleteBannerImage: boolean = false
+
   onImageChange(e: any) {
     if (e.target && e.target.files?.length) {
       const reader = new FileReader()
       reader.addEventListener('load', () => {
         this.localBannerImage = reader.result
+        //@ts-ignore
+        document.querySelector('.banner-preview').style.backgroundImage = `url(${this.localBannerImage})`
+        this.deleteBannerImage = false
+        console.log("on change", this.localBannerImage)
       });
       reader.readAsDataURL(e.target.files[0])
     } else {
+      console.log("Helloo")
       this.localBannerImage = null
     }
   }
 
   ngOnInit() {
-    this.metaDataService.metaDataSubject.subscribe(metaData => this.metaData = metaData)
+    this.metaDataService.metaDataSubject.subscribe((metaData) => {
+      this.metaData = metaData
+      this.localBannerImage = metaData.bannerImage
+    })
     this.metaDataService.getMetaData()
-    this.localBannerImage = this.metaData.bannerImage
+  }
+
+  ngAfterViewInit() {
+    if (this.metaData.bannerImage) {
+      //@ts-ignore
+      document.querySelector('.banner-preview').style.backgroundImage = `url(${this.localBannerImage})`
+    }
+  }
+
+  removeLocalBannerImage() {
+    this.localBannerImage = null
+    this.deleteBannerImage = true
   }
 
   updateSettings(settings: {siteTitle: string, authorName: string}) {
@@ -59,9 +80,17 @@ export class SettingsModalComponent {
       this.metaDataService.setAuthorName(settings.authorName)
     }
 
-    if (this.localBannerImage) {
+    if (this.deleteBannerImage) {
+      this.metaDataService.setBannerImage(null)
+    } else {
+      this.test()
+      console.log("first", this.localBannerImage)
       this.metaDataService.setBannerImage(this.localBannerImage)
     }
     this.closeModal.emit()
+  }
+
+  test() {
+    console.log("test", this.localBannerImage)
   }
 }

@@ -43,7 +43,7 @@ export class SiteMetaDataService {
     this.metaDataSubject.next(this.metaData)
   }
 
-  setBannerImage(image: ArrayBuffer | string) {
+  setBannerImage(image: ArrayBuffer | string | null) {
     this.metaData.bannerImage = image
     localStorage.setItem('bannerImage', JSON.stringify(image))
     this.metaDataSubject.next(this.metaData)

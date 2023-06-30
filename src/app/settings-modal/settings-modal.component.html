@@ -2,25 +2,46 @@
 
 <div class="form-fields-container">
     <div class="form-field-wrapper">
-        <label for="blog-title">* Blog title:</label>
+        <label for="blog-title">
+            <h3>Blog title</h3>
+            <p>Change the title of your page</p>
+        </label>
         <input type="text" #siteTitle id="blog-title" value="{{metaData.siteTitle}}" />
         <p *ngIf="formErrors.siteTitle" class="input-error">This field is required</p>
     </div>
     <div class="form-field-wrapper">
-        <label for="author-name">* Author name:</label>
+        <label for="author-name">
+            <h3>Author name</h3>
+            <p>Your name that will be associated with the articles you write</p>
+        </label>
         <input type="text" #authorName id="author-name" value="{{metaData.authorName}}" />
         <p *ngIf="formErrors.authorName" class="input-error">This field is required</p>
     </div>
     <div class="form-field-wrapper">
-        <label for="banner">* Banner:</label>
+        <label for="banner" class="banner-label">
+            <h3>Banner</h3>
+            <p>Choose a picture to be the banner for your page</p>
+            <div class="file-input-area">
+                <span>+ Choose file</span>
+            </div>
+        </label>
         <input type="file" id="banner" (change)="onImageChange($event)" />
-        <img *ngIf="localBannerImage" src="{{localBannerImage}}" alt="test-image" />
+        <div *ngIf="localBannerImage" (click)="removeLocalBannerImage()" class="banner-remove-button">
+            Remove current picture
+        </div>
+    </div>
+    <h4 (click)="test()">Preview: </h4>
+    <div class="banner-preview">
+        <div class="shade"></div>
+        <span>{{metaData.siteTitle}}</span>
     </div>
 </div>
 
-<button
+<div
     class="save-button"
-    (click)="
-        updateSettings({siteTitle: siteTitle.value, authorName: authorName.value})
-    "
->Save</button>
+    title="Save settings"
+    role="button"
+    (click)="updateSettings({siteTitle: siteTitle.value, authorName: authorName.value})"
+>
+    Save
+</div>
