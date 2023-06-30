@@ -2,23 +2,44 @@
 
 <div class="form-fields-container">
     <div class="form-field-wrapper">
-        <label for="title-input">* Title:</label>
+        <label for="title-input">
+            <h3>Article title</h3>
+            <p>Give your article a title</p>
+        </label>
         <input type="text" #title id="title-input" value="{{activeArticle?.title ?? ''}}"  />
         <p *ngIf="formErrors.title" class="input-error">This field is required</p>
     </div>
+
+
+    <div class="form-field-wrapper">
+        <label for="article-image" class="article-image-label">
+            <h3>Image</h3>
+            <p>Choose an image to accompany your article</p>
+            <div class="file-input-area">
+                <span>+ Choose file</span>
+            </div>
+        </label>
+        <input type="file" id="article-image" (change)="onImageChange($event)" />
+        <div *ngIf="localArticleImage" (click)="removeLocalArticleImage()" class="article-image-remove-button">
+            Remove current picture
+        </div>
+    </div>
+    <div class="article-image-preview">
+        <div *ngIf="!localArticleImage" class="shade"></div>
+    </div>
+
+    <div class="html-content-editor">
+        <angular-editor [(ngModel)]="htmlContent" [config]="config" class="html-content-editor"></angular-editor>
+    </div>
+
+    <div
+        class="add-article-button"
+        title="Add article"
+        role="button"
+        (click)="addArticle({
+            title: title.value
+        })"
+    >
+        Add
+    </div>
 </div>
-
-<div class="form-field-wrapper">
-    <label for="banner">* image:</label>
-    <input type="file" id="banner" (change)="onImageChange($event)" />
-    <img *ngIf="localArticleImage" src="{{localArticleImage}}" alt="test-image" />
-</div>
-
-<angular-editor [(ngModel)]="htmlContent" [config]="config"></angular-editor>
-
-<button
-    class="add-article-button"
-    (click)="addArticle({
-        title: title.value
-    })"
->Add</button>

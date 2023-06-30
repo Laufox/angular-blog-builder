@@ -25,8 +25,6 @@ export class SettingsModalComponent {
   localAuthorName: string = ''
   localBannerImage: string | ArrayBuffer | null = null
 
-  deleteBannerImage: boolean = false
-
   onImageChange(e: any) {
     if (e.target && e.target.files?.length) {
       const reader = new FileReader()
@@ -34,11 +32,9 @@ export class SettingsModalComponent {
         this.localBannerImage = reader.result
         //@ts-ignore
         document.querySelector('.banner-preview').style.backgroundImage = `url(${this.localBannerImage})`
-        this.deleteBannerImage = false
       });
       reader.readAsDataURL(e.target.files[0])
     } else {
-      console.log("Helloo")
       this.localBannerImage = null
     }
   }
@@ -64,7 +60,6 @@ export class SettingsModalComponent {
     this.localBannerImage = null
     //@ts-ignore
     document.querySelector('.banner-preview').style.backgroundImage = `none`
-    this.deleteBannerImage = true
   }
 
   updateSettings() {

@@ -71,9 +71,24 @@ export class ArticleFormComponent {
       const reader = new FileReader()
       reader.addEventListener('load', () => {
         this.localArticleImage = reader.result
+        //@ts-ignore
+        document.querySelector('.article-image-preview').style.backgroundImage = `url(${this.localArticleImage})`
       });
       reader.readAsDataURL(e.target.files[0])
     }
+  }
+
+  ngAfterViewInit() {
+    //@ts-ignore
+    document.querySelector('.angular-editor-toolbar').style.backgroundColor = `#fff`
+    //@ts-ignore
+    document.querySelector('.angular-editor-textarea').style.backgroundColor = `#fff`
+  }
+
+  removeLocalArticleImage() {
+    this.localArticleImage = null
+    //@ts-ignore
+    document.querySelector('.article-image-preview').style.backgroundImage = `none`
   }
 
   addArticle(content: {title: string}): void {
