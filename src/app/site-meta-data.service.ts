@@ -31,21 +31,13 @@ export class SiteMetaDataService {
     }
   }
 
-  setSiteTitle(title: string) {
-    this.metaData.siteTitle = title
-    localStorage.setItem("siteTitle", title)
-    this.metaDataSubject.next(this.metaData)
-  }
-
-  setAuthorName(name: string) {
-    this.metaData.authorName = name
-    localStorage.setItem("authorName", name)
-    this.metaDataSubject.next(this.metaData)
-  }
-
-  setBannerImage(image: ArrayBuffer | string | null) {
-    this.metaData.bannerImage = image
-    localStorage.setItem('bannerImage', JSON.stringify(image))
+  setMetaData(newMetaData: MetaData) {
+    this.metaData.siteTitle = newMetaData.siteTitle
+    localStorage.setItem("siteTitle", newMetaData.siteTitle)
+    this.metaData.authorName = newMetaData.authorName
+    localStorage.setItem("authorName", newMetaData.authorName)
+    this.metaData.bannerImage = newMetaData.bannerImage
+    localStorage.setItem('bannerImage', JSON.stringify(newMetaData.bannerImage))
     this.metaDataSubject.next(this.metaData)
   }
 }

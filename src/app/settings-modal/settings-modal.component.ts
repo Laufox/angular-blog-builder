@@ -11,8 +11,6 @@ import { MetaData } from '../metaData';
 export class SettingsModalComponent {
 
   @Output() closeModal = new EventEmitter()
-  siteTitle = ''
-  authorName = ''
 
   constructor (private metaDataService: SiteMetaDataService) {}
 
@@ -23,6 +21,8 @@ export class SettingsModalComponent {
     authorName: false
   }
 
+  localSiteTitle: string = ''
+  localAuthorName: string = ''
   localBannerImage: string | ArrayBuffer | null = null
 
   deleteBannerImage: boolean = false
@@ -35,7 +35,6 @@ export class SettingsModalComponent {
         //@ts-ignore
         document.querySelector('.banner-preview').style.backgroundImage = `url(${this.localBannerImage})`
         this.deleteBannerImage = false
-        console.log("on change", this.localBannerImage)
       });
       reader.readAsDataURL(e.target.files[0])
     } else {
@@ -48,6 +47,8 @@ export class SettingsModalComponent {
     this.metaDataService.metaDataSubject.subscribe((metaData) => {
       this.metaData = metaData
       this.localBannerImage = metaData.bannerImage
+      this.localSiteTitle = metaData.siteTitle
+      this.localAuthorName = metaData.authorName
     })
     this.metaDataService.getMetaData()
   }
@@ -61,36 +62,25 @@ export class SettingsModalComponent {
 
   removeLocalBannerImage() {
     this.localBannerImage = null
+    //@ts-ignore
+    document.querySelector('.banner-preview').style.backgroundImage = `none`
     this.deleteBannerImage = true
   }
 
-  updateSettings(settings: {siteTitle: string, authorName: string}) {
-    this.formErrors.siteTitle = !settings.siteTitle
-    this.formErrors.authorName = !settings.authorName
+  updateSettings() {
+    this.formErrors.siteTitle = !this.localSiteTitle
+    this.formErrors.authorName = !this.localAuthorName
 
     if (this.formErrors.siteTitle || this.formErrors.authorName) {
       return
     }
 
-    if (settings.siteTitle) {
-      this.metaDataService.setSiteTitle(settings.siteTitle)
-    }
+    this.metaDataService.setMetaData({
+      siteTitle: this.localSiteTitle,
+      authorName: this.localAuthorName,
+      bannerImage: this.localBannerImage
+    })
 
-    if (settings.authorName) {
-      this.metaDataService.setAuthorName(settings.authorName)
-    }
-
-    if (this.deleteBannerImage) {
-      this.metaDataService.setBannerImage(null)
-    } else {
-      this.test()
-      console.log("first", this.localBannerImage)
-      this.metaDataService.setBannerImage(this.localBannerImage)
-    }
     this.closeModal.emit()
-  }
-
-  test() {
-    console.log("test", this.localBannerImage)
   }
 }

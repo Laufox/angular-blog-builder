@@ -6,7 +6,7 @@
             <h3>Blog title</h3>
             <p>Change the title of your page</p>
         </label>
-        <input type="text" #siteTitle id="blog-title" value="{{metaData.siteTitle}}" />
+        <input type="text" #siteTitle id="blog-title" [(ngModel)]="localSiteTitle" />
         <p *ngIf="formErrors.siteTitle" class="input-error">This field is required</p>
     </div>
     <div class="form-field-wrapper">
@@ -14,7 +14,7 @@
             <h3>Author name</h3>
             <p>Your name that will be associated with the articles you write</p>
         </label>
-        <input type="text" #authorName id="author-name" value="{{metaData.authorName}}" />
+        <input type="text" #authorName id="author-name" [(ngModel)]="localAuthorName" />
         <p *ngIf="formErrors.authorName" class="input-error">This field is required</p>
     </div>
     <div class="form-field-wrapper">
@@ -30,10 +30,10 @@
             Remove current picture
         </div>
     </div>
-    <h4 (click)="test()">Preview: </h4>
+    <h4>Preview: </h4>
     <div class="banner-preview">
         <div class="shade"></div>
-        <span>{{metaData.siteTitle}}</span>
+        <span>{{localSiteTitle}}</span>
     </div>
 </div>
 
@@ -41,7 +41,7 @@
     class="save-button"
     title="Save settings"
     role="button"
-    (click)="updateSettings({siteTitle: siteTitle.value, authorName: authorName.value})"
+    (click)="updateSettings()"
 >
     Save
 </div>
