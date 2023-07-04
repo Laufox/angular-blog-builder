@@ -61,6 +61,10 @@ export class ArticleFormComponent {
     if (this.activeArticle) {
       this.htmlContent = this.activeArticle.htmlContent
       this.localArticleImage = this.activeArticle.image ?? null
+      if (this.localArticleImage) {
+        //@ts-ignore
+        document.querySelector('.article-image-preview').style.backgroundImage = `url(${this.localArticleImage})`
+      }
     }
     this.siteMetaDataService.metaDataSubject.subscribe(metaData => this.metaData = metaData)
     this.siteMetaDataService.getMetaData()
