@@ -1,5 +1,9 @@
 <h2>{{activeArticle?.title}}</h2>
-<span>{{activeArticle?.author}}</span>
-<span>{{activeArticle?.date}}</span>
+<div class="meta-data">
+    <p>{{activeArticle?.author}}</p>
+    <p>Posted {{activeArticle?.date}}</p>
+    <p *ngIf="activeArticle?.lastUpdated">Updated at {{activeArticle?.lastUpdated}}</p>
+</div>
+<img *ngIf="activeArticle?.image" src="{{activeArticle?.image}}" />
 
 <div [innerHTML]="activeArticle?.htmlContent"></div>

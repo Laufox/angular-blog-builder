@@ -15,6 +15,10 @@ h2 {
         // background-color: aquamarine;
         // width: 100%;
 
+        label {
+            margin: 5px 0;
+        }
+
         #blog-title, #author-name {
             padding: 5px;
             font-size: 16pt;
@@ -37,6 +41,7 @@ h2 {
 
         .banner-label {
             .file-input-area {
+                margin-top: 5px;
                 padding: 15px 30px;
                 outline: 2px dashed black;
                 background-color: rgb(255, 255, 255);
