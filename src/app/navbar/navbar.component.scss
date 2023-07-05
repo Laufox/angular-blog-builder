@@ -1,6 +1,10 @@
 .navbar-wrapper {
     height: 40px;
     background-color: #ddd;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    border-bottom: 1px solid #333;
 
     .navbar-container {
         display: flex;
