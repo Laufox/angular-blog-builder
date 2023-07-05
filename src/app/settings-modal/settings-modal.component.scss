@@ -6,14 +6,11 @@ h2 {
     display: flex;
     flex-flow: column;
     gap: 10px;
-    // background-color: blueviolet;
     align-self: stretch;
 
     .form-field-wrapper {
         display: flex;
         flex-flow: column;
-        // background-color: aquamarine;
-        // width: 100%;
 
         label {
             margin: 5px 0;
